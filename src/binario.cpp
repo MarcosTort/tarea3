@@ -35,7 +35,7 @@ struct _rep_binario {
   El tiempo de ejecución es O(1).
  */
 TBinario crearBinario(){
-  _rep_binario *binario = new _rep_binario;
+  TBinario binario = new _rep_binario;
   binario->izq = binario->der = NULL;
   return binario;
 }

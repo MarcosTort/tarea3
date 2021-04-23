@@ -1,4 +1,3 @@
-//5286580
 #include "../include/cadena.h"
 #include "../include/info.h"
 #include "../include/utils.h"

@@ -1,4 +1,3 @@
-//5286580
 #include "../include/usoTads.h"
 #include "../include/cadena.h"
 #include "../include/info.h"
@@ -14,6 +13,11 @@
   El tiempo de ejecución en el peor caso es O(n), siendo 'n' la cantidad de
   elementos de 'cad'.
  */
+TCadena nivelEnBinario(nat l, TBinario b){
+  return NULL;
+}
+bool esCamino(TCadena c, TBinario b){return false;}
+
 bool pertenece(nat elem, TCadena cad){
   TLocalizador rec = inicioCadena(cad);
   if(!esVaciaCadena(cad)){
@@ -228,4 +232,3 @@ TCadena subCadena(nat menor, nat mayor, TCadena cad){
   insertarSegmentoDespues(copiarSegmento(inicioSub, finalSub, cad ), finalCadena(sub), sub);
 return sub;
 }
-

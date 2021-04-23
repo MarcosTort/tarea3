@@ -79,7 +79,6 @@ TInfo mayor(TBinario b){
   return ret;
 ;}
 /*
-/*
   Remueve el nodo en el que se localiza el elemento mayor de 'b'
   (libera la memoria  asignada al nodo, pero no la del elemento).
   Devuelve 'b'.

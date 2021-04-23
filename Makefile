@@ -28,7 +28,7 @@
 all: principal
 
 # Objetivos que no son archivos.
-.PHONY: all clean_bin clean_test clean entrega
+.PHONY: all clean_bin clean_test clean testing entrega
 
 MODULOS = utils info cadena binario iterador usoTads
 
@@ -91,7 +91,7 @@ $(EJECUTABLE):$(ODIR)/$(PRINCIPAL).o $(OS)
 	$(LD) $(CCFLAGS) $^ -o $@
 
 # casos de prueba
-CASOS = 01 02 03 04 05 06 07 08 09 10 11 12 200 A B C D t-ultimos t-avl
+CASOS = 01 02 03 04 05 06 07 08 09 10 11 12 200 t-ultimos t-avl
 
 
 # cadena de archivos, con directorio y extensión
@@ -130,6 +130,58 @@ $(TESTDIR)/t-avl.sal:$(TESTDIR)/t-avl.in
 # el estado de la salida no es 0 y en ese caso se imprime el mensaje.
 
 
+
+# crea las reglas t-caso, y cada una depende del ejecutable
+tS=$(CASOS:%=t-%)
+$(tS):$(EJECUTABLE)
+
+# corre el ejecutable con el .in (el primer prerequisito $<) y lo guarda en un archivo temporal
+# hace el diff entre el -out (el segundo prerequisito, echo $(word 2,$^)) y el archivo temporal
+# borra el archivo temporal
+t-%:$(TESTDIR)/%.in $(TESTDIR)/%.out
+	@timeout 4 valgrind -q --leak-check=full ./$(EJECUTABLE) < $< > $@tmp;  \
+	diff `echo $(word 2,$^)` $@tmp ; \
+	if [ $$? -eq 0 ];                                         \
+	then                                                      \
+		echo ---- Bien ----;                                    \
+	fi;                                                       \
+	rm -f $@tmp
+
+t-t-ultimos:$(TESTDIR)/t-ultimos.in $(TESTDIR)/t-ultimos.out
+	@timeout 10 ./$(EJECUTABLE) < $< > $@tmp;  \
+	diff `echo $(word 2,$^)` $@tmp ; \
+	if [ $$? -eq 0 ];                                         \
+	then                                                      \
+		echo ---- Bien ----;                                    \
+	fi;                                                       \
+	rm -f $@tmp
+
+
+t-t-avl:$(TESTDIR)/t-avl.in $(TESTDIR)/t-avl.out
+	@timeout 10 ./$(EJECUTABLE) < $< > $@tmp;  \
+	diff `echo $(word 2,$^)` $@tmp ; \
+	if [ $$? -eq 0 ];                                         \
+	then                                                      \
+		echo ---- Bien ----;                                    \
+	fi;                                                       \
+	rm -f $@tmp
+
+
+
+
+# Test general. Las dependencias son los .diff.
+# Con `find` se encuentran los .diff de tamaño > 0 que están en el directorio
+# $(TESTDIR) y lo asigna a $(LST_ERR).
+# Si el tamaño de $(LST_ERR) no es cero imprime los casos con error.
+# Con `sed` se elimina el nombre de directorio y la extensión.
+testing:all $(DIFFS)
+	@LST_ERR=$$(find $(TESTDIR) -name *.diff* -size +0c -print);             \
+	if [ -n "$${LST_ERR}" ];                                                \
+	then                                                                    \
+		echo -- CASOS CON ERRORES --;                                   \
+		echo "$${LST_ERR}" | sed -e 's/$(TESTDIR)\///g' -e 's/.diff//g';\
+	fi
+
 # Genera el entregable.
 ENTREGA=Entrega3.tar.gz
 CPPS_ENTREGA = cadena.cpp binario.cpp iterador.cpp usoTads.cpp
@@ -152,5 +204,7 @@ clean_test:
 # borra binarios, resultados de ejecución y comparación, y copias de respaldo
 clean:clean_test clean_bin
 	@rm -f *~ $(HDIR)/*~ $(CPPDIR)/*~ $(TESTDIR)/*~
+
+
 
 

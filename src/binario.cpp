@@ -70,7 +70,15 @@ TBinario insertarEnBinario(TInfo i, TBinario b){
   El tiempo de ejecución es O(log n) en promedio, siendo 'n' la cantidad de
   elementos de 'b'.
  */
-TInfo mayor(TBinario b){return NULL;}
+TInfo mayor(TBinario b){
+  TInfo ret;
+  if (!esVacioBinario(b)){
+    if    (b->der == NULL){ret = b->dato;}
+    else  {mayor(b->der);}
+  }
+  return ret;
+;}
+/*
 /*
   Remueve el nodo en el que se localiza el elemento mayor de 'b'
   (libera la memoria  asignada al nodo, pero no la del elemento).

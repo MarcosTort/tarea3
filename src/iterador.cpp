@@ -84,8 +84,8 @@ TIterador agregarAIterador(nat elem, TIterador iter){
  */
 TIterador reiniciarIterador(TIterador iter){
   if ((iter != NULL) && (iter->inicio->sig != NULL))
-    iter->actual = iter->inicio; 
-    return iter; 
+  {iter->actual = iter->inicio;} 
+   return iter; 
 };
 
 /*

@@ -35,11 +35,10 @@ struct _rep_binario {
   El tiempo de ejecución es O(1).
  */
 TBinario crearBinario(){
-  //TBinario binario = new _rep_binario;
-  // binario = NULL;
-  //binario->izq = binario->der = NULL;
-  //return binario;
-  return NULL;
+  TBinario binario = new _rep_binario;
+  binario = NULL;
+  binario->izq = binario->der = NULL;
+  return binario;
 }
 
 /*
@@ -71,10 +70,10 @@ TBinario insertarEnBinario(TInfo i, TBinario b){
   elementos de 'b'.
  */
 TInfo mayor(TBinario b){
-  TInfo ret;
+  TInfo ret = b->dato;
   if (!esVacioBinario(b)){
-    if    (b->der == NULL){ret = b->dato;}
-    else  {mayor(b->der);}
+    if(b->der == NULL){ret = b->dato;}
+    else{mayor(b->der);ret = b->dato;}
   }
   return ret;
 ;}
@@ -86,7 +85,17 @@ TInfo mayor(TBinario b){
   El tiempo de ejecución es O(log n) en promedio, siendo 'n' la cantidad de
   elementos de 'b'.
  */
-TBinario removerMayor(TBinario b){return NULL;} //
+TBinario removerMayor(TBinario b){
+  if(!esVacioBinario(b)){
+    if( b->der == NULL){
+      TBinario izquierda = b->izq;
+      delete (b);
+      b = izquierda;
+    }
+    else{removerMayor(b->der);}
+  }
+  return b;
+} 
 
 /*
   Remueve de 'b' el nodo en el que el componente natural de su elemento es
@@ -100,7 +109,30 @@ TBinario removerMayor(TBinario b){return NULL;} //
   El tiempo de ejecución es O(log n) en promedio, siendo 'n' la cantidad de
   elementos de 'b'.
  */
-TBinario removerDeBinario(nat elem, TBinario b){return NULL;}
+ TBinario removerDeBinario(nat elem, TBinario b);
+ TBinario removerDeBinario(nat elem, TBinario b){
+if (b != NULL ){
+  if (natInfo(b->dato) == elem){
+    if (b->der != NULL && b->izq != NULL){
+    b->dato =  mayor(b->izq);
+    removerMayor(b->izq);
+    }
+    else if (b->der == NULL && b->izq != NULL){
+    TBinario aucs = b;
+    b = b->izq;
+    delete aucs;
+    }
+    else if (b->izq == NULL && b->der != NULL){
+    TBinario aucs = b;
+    b = b->der;
+    delete aucs;
+    }
+  }
+else if (elem < natInfo(b->dato)) removerDeBinario(elem,b->izq);
+else removerDeBinario(elem,b->der);
+}
+return b;
+}
 
 /*
   Libera la memoria asociada a 'b' y todos sus elementos.

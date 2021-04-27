@@ -37,7 +37,7 @@ struct _rep_binario {
 TBinario crearBinario(){
   return NULL;
 }
-
+//LISTO
 /*
   Inserta 'i' en 'b' respetando la propiedad de orden definida.
   Devuelve 'b'.
@@ -59,14 +59,14 @@ TBinario insertarEnBinario(TInfo i, TBinario b){
   }
   return b;
 }
-
+//LISTO
 /*
   Devuelve el elemento mayor (según la propiedad de orden definida) de 'b'.
   Precondición: ! esVacioBinario(b).
   El tiempo de ejecución es O(log n) en promedio, siendo 'n' la cantidad de
   elementos de 'b'.
  */
-TInfo mayor(TBinario b){
+TInfo mayor(TBinario b){//LISTO
   TInfo ret = b->dato;
   if (!esVacioBinario(b)){
     if(b->der == NULL){ret = b->dato;}
@@ -82,7 +82,7 @@ TInfo mayor(TBinario b){
   El tiempo de ejecución es O(log n) en promedio, siendo 'n' la cantidad de
   elementos de 'b'.
  */
-TBinario removerMayor(TBinario b){
+TBinario removerMayor(TBinario b){//LISTO
   if(!esVacioBinario(b)){
     if( b->der == NULL){
       TBinario izquierda = b->izq;
@@ -107,7 +107,7 @@ TBinario removerMayor(TBinario b){
   elementos de 'b'.
  */
  TBinario removerDeBinario(nat elem, TBinario b);
- TBinario removerDeBinario(nat elem, TBinario b){
+ TBinario removerDeBinario(nat elem, TBinario b){//LISTO
 if (b != NULL ){
   if (natInfo(b->dato) == elem){
     if (b->der != NULL && b->izq != NULL){
@@ -130,18 +130,24 @@ else removerDeBinario(elem,b->der);
 }
 return b;
 }
-
 /*
   Libera la memoria asociada a 'b' y todos sus elementos.
   El tiempo de ejecución es O(n), siendo 'n' es la cantidad de elementos de 'b'.
  */
-void liberarBinario(TBinario b){}
+void liberarBinario(TBinario b){//LISTO
+  if(b != NULL){
+  liberarBinario(b->der);
+  liberarBinario(b->izq);
+  delete b;
+  b = NULL;
+  }
+}
 
 /*
   Devuelve 'true' si y solo si 'b' es vacío (no tiene elementos).
   El tiempo de ejecución es O(1).
  */
-bool esVacioBinario(TBinario b){return false;}
+bool esVacioBinario(TBinario b){return b == NULL;}//LISTO
 
 /*
   Devuelve 'true' si y solo si cada nodo de 'b' cumple la condición de balanceo
@@ -152,28 +158,47 @@ bool esVacioBinario(TBinario b){return false;}
   Cada nodo se puede visitar una sola vez.
   El tiempo de ejecución es O(n), siendo 'n' la cantidad de elementos de 'b'.
  */
-bool esAvl(TBinario b){return true;} //para ultimo
+bool esAvl(TBinario b){
+  
+  if(!esVacioBinario(b)){
+    bool ret;
+    if((izquierdo(b) != NULL)&&(derecho(b)==NULL)){
+      if(izquierdo(izquierdo(b)) != NULL || derecho(izquierdo(b))!= NULL){ret = false;}
+      else                                                               {ret = true;}
+    }
+    else
+    if((izquierdo(b) == NULL)&&(derecho(b)!=NULL)){
+      if(derecho(derecho(b)) != NULL || izquierdo(izquierdo(b))!= NULL){ret = false;}
+      else                                                             {ret = true;}
+    }
+    else{
+      ret = esAvl(izquierdo(b)) && esAvl(derecho(b));
+    }
+    return ret;
+  }
+  else return true;
+}
 
 /*
   Devuelve el elemento asociado a la raíz de 'b'.
   Precondición: ! esVacioBinario(b).
   El tiempo de ejecución es O(1).
  */
-TInfo raiz(TBinario b){return NULL;}
+TInfo raiz(TBinario b){return b->dato;}//LISTO
 
 /*
   Devuelve el subárbol izquierdo de 'b'.
   Precondición: ! esVacioBinario(b).
   El tiempo de ejecución es O(1).
  */
-TBinario izquierdo(TBinario b){return NULL;}
+TBinario izquierdo(TBinario b){return b->izq;}//LISTO
 
 /*
   Devuelve el subárbol derecho de 'b'.
   Precondición: ! esVacioBinario(b).
   El tiempo de ejecución es O(1).
  */
-TBinario derecho(TBinario b){return NULL;}
+TBinario derecho(TBinario b){return b->der;}//LISTO
 
 /*
   Devuelve el subárbol que tiene como raíz al nodo con el elemento cuyo
@@ -182,20 +207,55 @@ TBinario derecho(TBinario b){return NULL;}
   El tiempo de ejecución es O(log n) en promedio, siendo 'n' la cantidad de
   elementos de 'b'.
  */
-TBinario buscarSubarbol(nat elem, TBinario b){return NULL;}
+TBinario buscarSubarbol(nat elem, TBinario b){//LISTO
+  if(!esVacioBinario(b)){
+    TBinario sub = NULL;
+    if(elem == natInfo(b->dato)){
+      sub = b;
+    }
+    else if(elem>natInfo(b->dato)){
+      buscarSubarbol(elem, izquierdo(b));
+    }
+    else if(elem<natInfo(b->dato)){
+      buscarSubarbol(elem, derecho(b));
+    }
+    return sub;
+  }
+  else return NULL;
+  
+}
 
 /*
   Devuelve la altura de 'b'.
   La altura de un árbol vacío es 0.
   El tiempo de ejecución es O(n), siendo 'n' la cantidad de elementos de 'b'.
  */
-nat alturaBinario(TBinario b){return 0;}
+nat max(nat a ,nat b){//LISTO
+if(a > b) return a;
+else      return b;
+}
+nat alturaBinario(TBinario b){//LISTO
+  
+if(b == NULL) return 0;
+  else{
+  return 1 + max(alturaBinario(b->izq), alturaBinario(b->der));
+  }
+}
+
 
 /*
   Devuelve la cantidad de elementos de 'b'.
   El tiempo de ejecución es O(n), siendo 'n' la cantidad de elementos de 'b'.
  */
-nat cantidadBinario(TBinario b){return 0;}
+nat cantidadBinario(TBinario b){//LISTO
+  if(esVacioBinario(b)) return 0;
+  else{
+    nat cant = 0;
+    cant = 1 + cantidadBinario(b->der) + cantidadBinario(b->izq);
+    return cant;
+  }
+}
+
 
 /*
   Devuelve la suma de los componentes reales de los últimos 'i' elementos
@@ -208,7 +268,9 @@ nat cantidadBinario(TBinario b){return 0;}
   'i' elementos.
   El tiempo de ejecución es O(n), siendo 'n' la cantidad de elementos de 'b'.
  */
-double sumaUltimosPositivos(nat i, TBinario b){return 0;} //ultimo
+double sumaUltimosPositivos(nat i, TBinario b){
+  return 0;
+} //ultimo
 
 /*
   Devuelve una 'TCadena' con los elementos de 'b' en orden creciente según
@@ -216,7 +278,24 @@ double sumaUltimosPositivos(nat i, TBinario b){return 0;} //ultimo
   La 'TCadena' devuelta no comparte memoria con 'b'.
   El tiempo de ejecución es O(n), siendo 'n' la cantidad de elementos de 'b'.
  */
-TCadena linealizacion(TBinario b){return NULL;}
+TCadena lineaux(TCadena cad, TBinario b){//LISTO
+  if (!esVacioBinario(b)){
+    lineaux(cad, b->izq);//llegar al mayor
+    TInfo dato = copiaInfo(b->dato);
+    insertarAlFinal(dato, cad);//insertar de mayor a menor de izq
+    lineaux(cad, b->der);
+    return cad;
+  }
+  else return NULL;
+}
+TCadena linealizacion(TBinario b){//LISTO
+  if(!esVacioBinario(b)){
+  TCadena cad = crearCadena();
+  lineaux(cad, b);
+    return cad;
+  }
+  else return NULL;
+}
 
 /*
   Devuelve un árbol con copias de los elementos de 'b' que cumplen la condición
@@ -248,4 +327,5 @@ TBinario menores(double cota, TBinario b){return NULL;} //ultimo
   El tiempo de ejecución es O(n . log n) en promedio, siendo 'n' la cantidad
   de elementos de 'b'.
  */
-void imprimirBinario(TBinario b){}
+void imprimirBinario(TBinario b){}//FALTA
+

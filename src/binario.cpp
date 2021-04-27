@@ -209,8 +209,8 @@ TBinario derecho(TBinario b){return b->der;}//LISTO
   elementos de 'b'.
  */
 TBinario buscarSubarbol(nat elem, TBinario b){//LISTO
+TBinario sub;
   if(!esVacioBinario(b)){
-    TBinario sub = NULL;
     if(elem == natInfo(b->dato)){
       sub = b;
     }
@@ -221,10 +221,10 @@ TBinario buscarSubarbol(nat elem, TBinario b){//LISTO
       buscarSubarbol(elem, derecho(b));
     }
     return sub;
-  }
-  else return NULL;
-  
+  }else sub = NULL;
+  return sub;
 }
+
 
 /*
   Devuelve la altura de 'b'.

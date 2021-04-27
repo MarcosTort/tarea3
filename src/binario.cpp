@@ -220,7 +220,6 @@ TBinario sub;
     else if(elem<natInfo(b->dato)){
       buscarSubarbol(elem, derecho(b));
     }
-    return sub;
   }else sub = NULL;
   return sub;
 }

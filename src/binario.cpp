@@ -47,8 +47,9 @@ TBinario crearBinario(){
  */
 TBinario insertarEnBinario(TInfo i, TBinario b){
   if(!esVacioBinario(b)){
-    if(i<b->dato){insertarEnBinario(i, b->izq);}
-    else if(i>b->dato){insertarEnBinario(i, b->der);}
+    if(natInfo(i)<natInfo(b->dato)){insertarEnBinario(i, b->izq);}
+    else 
+    if(natInfo(i)>natInfo(b->dato)){insertarEnBinario(i, b->der);}
   }
   else{
     TBinario bin = new _rep_binario;

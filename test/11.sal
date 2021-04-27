@@ -1,0 +1,29 @@
+1>#  Prueba menores, insertarEnBinario.
+2>Insertado.
+3>Insertado.
+4>Insertado.
+5>Insertado.
+6>Insertado.
+7>Insertado.
+8>Insertado.
+9>Insertado.
+10>Insertado.
+11>Insertado.
+12>Insertado.
+13>Insertado.
+14>Insertado.
+15>Insertado.
+16>Insertado.
+17>18>19>20>21>22>23>24>25>26>27>28>29>30>31>32>33>Fin.
+==13179== 16 bytes in 1 blocks are definitely lost in loss record 1 of 3
+==13179==    at 0x4838E86: operator new(unsigned long) (vg_replace_malloc.c:344)
+==13179==    by 0x402C13: crearInfo(unsigned int, double) (info.cpp:24)
+==13179==    by 0x40123E: leerInfo() (principal.cpp:65)
+==13179==    by 0x40156C: main (principal.cpp:149)
+==13179== 
+==13179== 560 (336 direct, 224 indirect) bytes in 14 blocks are definitely lost in loss record 3 of 3
+==13179==    at 0x4838E86: operator new(unsigned long) (vg_replace_malloc.c:344)
+==13179==    by 0x403A9F: insertarEnBinario(_rep_info*, _rep_binario*) (binario.cpp:54)
+==13179==    by 0x403A93: insertarEnBinario(_rep_info*, _rep_binario*) (binario.cpp:51)
+==13179==    by 0x401589: main (principal.cpp:151)
+==13179== 

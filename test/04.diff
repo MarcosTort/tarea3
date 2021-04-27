@@ -1,0 +1,57 @@
+0a1,15
+> ==13115== Invalid read of size 8
+> ==13115==    at 0x403AE5: mayor(_rep_binario*) (binario.cpp:70)
+> ==13115==    by 0x4015C0: main (principal.cpp:156)
+> ==13115==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+> ==13115== 
+> ==13115== 
+> ==13115== Process terminating with default action of signal 11 (SIGSEGV): dumping core
+> ==13115==  Access not within mapped region at address 0x0
+> ==13115==    at 0x403AE5: mayor(_rep_binario*) (binario.cpp:70)
+> ==13115==    by 0x4015C0: main (principal.cpp:156)
+> ==13115==  If you believe this happened as a result of a stack
+> ==13115==  overflow in your program's main thread (unlikely but
+> ==13115==  possible), you can try to increase the size of the
+> ==13115==  main thread stack using the --main-stacksize= flag.
+> ==13115==  The main thread stack size used in this run was 8388608.
+7,13c22
+< 7>
+< --(12,12.12)
+< -(11,11.11)
+< (10,10.10)
+< -(9,9.90)
+< --(8,8.80)
+< 8>(12,12.12)
+---
+> 7>8>(10,10.10)
+15,36c24,30
+< 10>(11,11.11)
+< 11>
+< -(11,11.11)
+< (10,10.10)
+< -(9,9.90)
+< --(8,8.80)
+< 12>(10,10.10)
+< 13>(11,11.11)
+< 14>(9,9.90)
+< 15>Removido.
+< 16>
+< -(11,11.11)
+< (10,10.10)
+< -(8,8.80)
+< 17>Removido el mayor.
+< 18>
+< (10,10.10)
+< -(8,8.80)
+< 19>Removido.
+< 20>Removido.
+< 21>
+< 22>Fin.
+---
+> 10>==13115== 144 (96 direct, 48 indirect) bytes in 4 blocks are definitely lost in loss record 5 of 5
+> ==13115==    at 0x4838E86: operator new(unsigned long) (vg_replace_malloc.c:344)
+> ==13115==    by 0x403A9F: insertarEnBinario(_rep_info*, _rep_binario*) (binario.cpp:54)
+> ==13115==    by 0x403A93: insertarEnBinario(_rep_info*, _rep_binario*) (binario.cpp:51)
+> ==13115==    by 0x401589: main (principal.cpp:151)
+> ==13115== 
+> timeout: the monitored command dumped core

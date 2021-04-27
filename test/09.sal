@@ -1,0 +1,54 @@
+1>#  Prueba esAvl, insertarEnBinario, removerDeBinario, imprimirBinario, cantidadBinario, alturaBinario.
+2>Insertado.
+3>AVL.
+4>Insertado.
+5>AVL.
+6>Insertado.
+7>AVL.
+8>AVL.
+9>Insertado.
+10>AVL.
+11>Insertado.
+12>AVL.
+13>Removido.
+14>Insertado.
+15>AVL.
+16>Removido.
+17>Removido.
+18>Insertado.
+19>Insertado.
+20>AVL.
+21>Removido.
+22>Insertado.
+23>AVL.
+24>Insertado.
+25>AVL.
+26>27>1.
+28>1.
+29>Removido.
+30>AVL.
+31>Removido.
+32>AVL.
+33>Removido.
+34>AVL.
+35>Removido.
+36>AVL.
+37>Removido.
+38>AVL.
+39>Removido.
+40>AVL.
+41>42>1.
+43>1.
+44>Fin.
+==13165== 16 bytes in 1 blocks are definitely lost in loss record 1 of 3
+==13165==    at 0x4838E86: operator new(unsigned long) (vg_replace_malloc.c:344)
+==13165==    by 0x402C13: crearInfo(unsigned int, double) (info.cpp:24)
+==13165==    by 0x40123E: leerInfo() (principal.cpp:65)
+==13165==    by 0x40156C: main (principal.cpp:149)
+==13165== 
+==13165== 360 (216 direct, 144 indirect) bytes in 9 blocks are definitely lost in loss record 3 of 3
+==13165==    at 0x4838E86: operator new(unsigned long) (vg_replace_malloc.c:344)
+==13165==    by 0x403A9F: insertarEnBinario(_rep_info*, _rep_binario*) (binario.cpp:54)
+==13165==    by 0x403A93: insertarEnBinario(_rep_info*, _rep_binario*) (binario.cpp:51)
+==13165==    by 0x401589: main (principal.cpp:151)
+==13165== 

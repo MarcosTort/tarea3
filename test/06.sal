@@ -1,0 +1,28 @@
+1>#  Prueba linealizacion, menores sumaUltimosPositivos.
+2>Insertado.
+3>Insertado.
+4>Insertado.
+5>Insertado.
+6>Insertado.
+7>Insertado.
+8>Insertado.
+9>10>(16,16.16)
+11>12>13>14>15>0.00
+16>Insertado.
+17>18>0.00
+19>0.00
+20>0.00
+21>0.00
+22>Fin.
+==13137== 16 bytes in 1 blocks are definitely lost in loss record 1 of 3
+==13137==    at 0x4838E86: operator new(unsigned long) (vg_replace_malloc.c:344)
+==13137==    by 0x402C13: crearInfo(unsigned int, double) (info.cpp:24)
+==13137==    by 0x40123E: leerInfo() (principal.cpp:65)
+==13137==    by 0x40156C: main (principal.cpp:149)
+==13137== 
+==13137== 280 (168 direct, 112 indirect) bytes in 7 blocks are definitely lost in loss record 3 of 3
+==13137==    at 0x4838E86: operator new(unsigned long) (vg_replace_malloc.c:344)
+==13137==    by 0x403A9F: insertarEnBinario(_rep_info*, _rep_binario*) (binario.cpp:54)
+==13137==    by 0x403A93: insertarEnBinario(_rep_info*, _rep_binario*) (binario.cpp:51)
+==13137==    by 0x401589: main (principal.cpp:151)
+==13137== 

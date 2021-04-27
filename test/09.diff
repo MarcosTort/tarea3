@@ -1,0 +1,59 @@
+15c15
+< 15>No AVL.
+---
+> 15>AVL.
+20c20
+< 20>No AVL.
+---
+> 20>AVL.
+23c23
+< 23>No AVL.
+---
+> 23>AVL.
+25,34c25,27
+< 25>No AVL.
+< 26>
+< -(20,20.20)
+< (10,10.10)
+< --(7,7.70)
+< ---(6,6.60)
+< -(5,5.50)
+< --(2,2.20)
+< 27>6.
+< 28>4.
+---
+> 25>AVL.
+> 26>27>1.
+> 28>1.
+36c29
+< 30>No AVL.
+---
+> 30>AVL.
+38c31
+< 32>No AVL.
+---
+> 32>AVL.
+40c33
+< 34>No AVL.
+---
+> 34>AVL.
+47,49c40,41
+< 41>
+< 42>0.
+< 43>0.
+---
+> 41>42>1.
+> 43>1.
+50a43,54
+> ==13165== 16 bytes in 1 blocks are definitely lost in loss record 1 of 3
+> ==13165==    at 0x4838E86: operator new(unsigned long) (vg_replace_malloc.c:344)
+> ==13165==    by 0x402C13: crearInfo(unsigned int, double) (info.cpp:24)
+> ==13165==    by 0x40123E: leerInfo() (principal.cpp:65)
+> ==13165==    by 0x40156C: main (principal.cpp:149)
+> ==13165== 
+> ==13165== 360 (216 direct, 144 indirect) bytes in 9 blocks are definitely lost in loss record 3 of 3
+> ==13165==    at 0x4838E86: operator new(unsigned long) (vg_replace_malloc.c:344)
+> ==13165==    by 0x403A9F: insertarEnBinario(_rep_info*, _rep_binario*) (binario.cpp:54)
+> ==13165==    by 0x403A93: insertarEnBinario(_rep_info*, _rep_binario*) (binario.cpp:51)
+> ==13165==    by 0x401589: main (principal.cpp:151)
+> ==13165== 

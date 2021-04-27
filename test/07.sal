@@ -1,0 +1,31 @@
+==13144== Invalid read of size 8
+==13144==    at 0x403394: imprimirCadena(_rep_cadena*) (cadena.cpp:187)
+==13144==    by 0x4024C3: main (principal.cpp:389)
+==13144==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+==13144== 
+==13144== 
+==13144== Process terminating with default action of signal 11 (SIGSEGV): dumping core
+==13144==  Access not within mapped region at address 0x0
+==13144==    at 0x403394: imprimirCadena(_rep_cadena*) (cadena.cpp:187)
+==13144==    by 0x4024C3: main (principal.cpp:389)
+==13144==  If you believe this happened as a result of a stack
+==13144==  overflow in your program's main thread (unlikely but
+==13144==  possible), you can try to increase the size of the
+==13144==  main thread stack using the --main-stacksize= flag.
+==13144==  The main thread stack size used in this run was 8388608.
+1>#  Prueba nivelEnBinario y esCamino.
+2>Insertado.
+3>Insertado.
+4>Insertado.
+5>Insertado.
+6>Insertado.
+7>Insertado.
+8>Insertado.
+9>l = 0.
+10>==13144== 224 (144 direct, 80 indirect) bytes in 6 blocks are definitely lost in loss record 6 of 6
+==13144==    at 0x4838E86: operator new(unsigned long) (vg_replace_malloc.c:344)
+==13144==    by 0x403A9F: insertarEnBinario(_rep_info*, _rep_binario*) (binario.cpp:54)
+==13144==    by 0x403A93: insertarEnBinario(_rep_info*, _rep_binario*) (binario.cpp:51)
+==13144==    by 0x401589: main (principal.cpp:151)
+==13144== 
+timeout: the monitored command dumped core

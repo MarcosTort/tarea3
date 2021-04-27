@@ -1,0 +1,93 @@
+0a1,15
+> ==13186== Invalid read of size 8
+> ==13186==    at 0x403AE5: mayor(_rep_binario*) (binario.cpp:70)
+> ==13186==    by 0x401624: main (principal.cpp:162)
+> ==13186==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+> ==13186== 
+> ==13186== 
+> ==13186== Process terminating with default action of signal 11 (SIGSEGV): dumping core
+> ==13186==  Access not within mapped region at address 0x0
+> ==13186==    at 0x403AE5: mayor(_rep_binario*) (binario.cpp:70)
+> ==13186==    by 0x401624: main (principal.cpp:162)
+> ==13186==  If you believe this happened as a result of a stack
+> ==13186==  overflow in your program's main thread (unlikely but
+> ==13186==  possible), you can try to increase the size of the
+> ==13186==  main thread stack using the --main-stacksize= flag.
+> ==13186==  The main thread stack size used in this run was 8388608.
+17,33c32
+< 17>
+< ---(27,27.00)
+< --(25,25.00)
+< ---(22,22.00)
+< -(20,20.00)
+< ---(17,17.00)
+< --(15,15.00)
+< ---(12,12.00)
+< (10,10.00)
+< ---(9,9.00)
+< --(7,7.00)
+< ---(6,6.00)
+< -(5,5.00)
+< ---(3,3.00)
+< --(2,2.00)
+< ---(1,1.00)
+< 18>NO es camino.
+---
+> 17>18>NO es camino.
+36c35
+< 21>Es camino.
+---
+> 21>NO es camino.
+39,41c38,40
+< 24>Es camino.
+< 25>Es camino.
+< 26>Es camino.
+---
+> 24>NO es camino.
+> 25>NO es camino.
+> 26>NO es camino.
+45,60c44
+< 30>
+< --(25,25.00)
+< ---(22,22.00)
+< -(20,20.00)
+< ---(17,17.00)
+< --(15,15.00)
+< ---(12,12.00)
+< (10,10.00)
+< ---(9,9.00)
+< --(7,7.00)
+< ---(6,6.00)
+< -(5,5.00)
+< ---(3,3.00)
+< --(2,2.00)
+< ---(1,1.00)
+< 31>NO es camino.
+---
+> 30>31>NO es camino.
+62,77c46,53
+< 33>Es camino.
+< 34>Removido el mayor.
+< 35>NO es camino.
+< 36>Es camino.
+< 37>Removido el mayor.
+< 38>NO es camino.
+< 39>Es camino.
+< 40>Removido el mayor.
+< 41>NO es camino.
+< 42>Removido.
+< 43>NO es camino.
+< 44>NO es camino.
+< 45>Removido.
+< 46>NO es camino.
+< 47>Es camino.
+< 48>Fin.
+---
+> 33>NO es camino.
+> 34>==13186== 544 (336 direct, 208 indirect) bytes in 14 blocks are definitely lost in loss record 5 of 5
+> ==13186==    at 0x4838E86: operator new(unsigned long) (vg_replace_malloc.c:344)
+> ==13186==    by 0x403A9F: insertarEnBinario(_rep_info*, _rep_binario*) (binario.cpp:54)
+> ==13186==    by 0x403A93: insertarEnBinario(_rep_info*, _rep_binario*) (binario.cpp:51)
+> ==13186==    by 0x401589: main (principal.cpp:151)
+> ==13186== 
+> timeout: the monitored command dumped core

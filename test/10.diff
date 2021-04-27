@@ -1,0 +1,36 @@
+9,19c9,11
+< 9>
+< --(25,25.00)
+< -(20,20.00)
+< --(15,15.00)
+< (10,10.00)
+< --(7,7.00)
+< -(5,5.00)
+< --(2,2.00)
+< 10>AVL.
+< 11>7.
+< 12>3.
+---
+> 9>10>AVL.
+> 11>1.
+> 12>1.
+40,42c32,33
+< 33>
+< 34>0.
+< 35>0.
+---
+> 33>34>1.
+> 35>1.
+43a35,46
+> ==13172== 16 bytes in 1 blocks are definitely lost in loss record 1 of 3
+> ==13172==    at 0x4838E86: operator new(unsigned long) (vg_replace_malloc.c:344)
+> ==13172==    by 0x402C13: crearInfo(unsigned int, double) (info.cpp:24)
+> ==13172==    by 0x40123E: leerInfo() (principal.cpp:65)
+> ==13172==    by 0x40156C: main (principal.cpp:149)
+> ==13172== 
+> ==13172== 480 (288 direct, 192 indirect) bytes in 12 blocks are definitely lost in loss record 3 of 3
+> ==13172==    at 0x4838E86: operator new(unsigned long) (vg_replace_malloc.c:344)
+> ==13172==    by 0x403A9F: insertarEnBinario(_rep_info*, _rep_binario*) (binario.cpp:54)
+> ==13172==    by 0x403A93: insertarEnBinario(_rep_info*, _rep_binario*) (binario.cpp:51)
+> ==13172==    by 0x401589: main (principal.cpp:151)
+> ==13172== 

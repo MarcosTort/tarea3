@@ -1,0 +1,23 @@
+12c12
+< 12>(2,2.20)
+---
+> 12>derecho de b es vacío.
+15,16c15,16
+< 15>(2,2.20)
+< 16>(3,3.30)
+---
+> 15>sub es vacío.
+> 16>sub es vacío.
+17a18,29
+> ==13101== 16 bytes in 1 blocks are definitely lost in loss record 1 of 3
+> ==13101==    at 0x4838E86: operator new(unsigned long) (vg_replace_malloc.c:344)
+> ==13101==    by 0x402C13: crearInfo(unsigned int, double) (info.cpp:24)
+> ==13101==    by 0x40123E: leerInfo() (principal.cpp:65)
+> ==13101==    by 0x40156C: main (principal.cpp:149)
+> ==13101== 
+> ==13101== 80 (48 direct, 32 indirect) bytes in 2 blocks are definitely lost in loss record 3 of 3
+> ==13101==    at 0x4838E86: operator new(unsigned long) (vg_replace_malloc.c:344)
+> ==13101==    by 0x403A9F: insertarEnBinario(_rep_info*, _rep_binario*) (binario.cpp:54)
+> ==13101==    by 0x403A93: insertarEnBinario(_rep_info*, _rep_binario*) (binario.cpp:51)
+> ==13101==    by 0x401589: main (principal.cpp:151)
+> ==13101== 

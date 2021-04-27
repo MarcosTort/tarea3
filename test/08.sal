@@ -1,0 +1,38 @@
+==13158== Invalid free() / delete / delete[] / realloc()
+==13158==    at 0x483A0D6: operator delete(void*, unsigned long) (vg_replace_malloc.c:595)
+==13158==    by 0x40435B: liberarIterador(_rep_iterador*) (iterador.cpp:134)
+==13158==    by 0x402B3C: main (principal.cpp:500)
+==13158==  Address 0x4dbbdb0 is 0 bytes inside a block of size 16 free'd
+==13158==    at 0x483A0D6: operator delete(void*, unsigned long) (vg_replace_malloc.c:595)
+==13158==    by 0x40435B: liberarIterador(_rep_iterador*) (iterador.cpp:134)
+==13158==    by 0x402B3C: main (principal.cpp:500)
+==13158==  Block was alloc'd at
+==13158==    at 0x4838E86: operator new(unsigned long) (vg_replace_malloc.c:344)
+==13158==    by 0x404220: agregarAIterador(unsigned int, _rep_iterador*) (iterador.cpp:68)
+==13158==    by 0x401449: main (principal.cpp:127)
+==13158== 
+1>#  implementar las operaciones de iterador.
+2>Actual de it NO está definida.
+3>Agregando.
+4>Agregando.
+5>Agregando.
+6>Agregando.
+7>Reiniciado.
+8>Actual de it está definida.
+9>5
+10>Avanzando.
+11>Avanzando.
+12>Avanzando.
+13>Actual de it está definida.
+14>8
+15>Avanzando.
+16>Actual de it NO está definida.
+17>Reiniciado.
+18>Actual de it está definida.
+19>5
+20>Fin.
+==13158== 48 (16 direct, 32 indirect) bytes in 1 blocks are definitely lost in loss record 2 of 2
+==13158==    at 0x4838E86: operator new(unsigned long) (vg_replace_malloc.c:344)
+==13158==    by 0x404220: agregarAIterador(unsigned int, _rep_iterador*) (iterador.cpp:68)
+==13158==    by 0x401449: main (principal.cpp:127)
+==13158== 

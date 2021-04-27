@@ -1,0 +1,22 @@
+1>#  Prueba cantidadBinario, esAvl, alturaBinario.
+2>Insertado.
+3>Insertado.
+4>Insertado.
+5>Insertado.
+6>Insertado.
+7>8>1.
+9>AVL.
+10>Insertado.
+11>12>AVL.
+13>1.
+14>1.
+15>Removido el mayor.
+16>17>0.
+18>0.
+19>Fin.
+==13130== 200 (120 direct, 80 indirect) bytes in 5 blocks are definitely lost in loss record 2 of 2
+==13130==    at 0x4838E86: operator new(unsigned long) (vg_replace_malloc.c:344)
+==13130==    by 0x403A9F: insertarEnBinario(_rep_info*, _rep_binario*) (binario.cpp:54)
+==13130==    by 0x403A93: insertarEnBinario(_rep_info*, _rep_binario*) (binario.cpp:51)
+==13130==    by 0x401589: main (principal.cpp:151)
+==13130== 

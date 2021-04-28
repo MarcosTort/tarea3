@@ -52,7 +52,7 @@ TBinario insertarEnBinario(TInfo i, TBinario b){
     if(natInfo(i)<natInfo(b->dato)){b = insertarEnBinario(i, b->der);}
   }
   else{
-    TBinario  b = new _rep_binario;
+    b = new _rep_binario;
     b->dato = i;
     b->izq = NULL;
     b->der = NULL;

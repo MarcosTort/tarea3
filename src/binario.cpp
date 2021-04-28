@@ -219,11 +219,11 @@ TBinario sub;
     if(elem == natInfo(b->dato)){
       sub = b;
     }
-    else if(elem<natInfo(b->dato)){
+    else if(elem>natInfo(b->dato)){
       if(!esVacioBinario(izquierdo(b)))
         sub = buscarSubarbol(elem, izquierdo(b));
     }
-    else if(elem>natInfo(b->dato)){
+    else if(elem<natInfo(b->dato)){
       if(!esVacioBinario(derecho(b)))
         sub = buscarSubarbol(elem, derecho(b));
     }

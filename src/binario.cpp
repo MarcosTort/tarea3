@@ -214,22 +214,18 @@ TBinario derecho(TBinario b){return b->der;}//LISTO
   elementos de 'b'.
  */
 TBinario buscarSubarbol(nat elem, TBinario b){//LISTO
-TBinario sub;
   if(!esVacioBinario(b)){
     if(elem == natInfo(b->dato)){
-      sub = b;
+      return b;
     }
     else if(elem>natInfo(b->dato)){
-      if(!esVacioBinario(izquierdo(b)))
-        sub = buscarSubarbol(elem, izquierdo(b));
+      return buscarSubarbol(elem, izquierdo(b));
     }
-    else if(elem<natInfo(b->dato)){
-      if(!esVacioBinario(derecho(b)))
-        sub = buscarSubarbol(elem, derecho(b));
+    else{
+      return buscarSubarbol(elem, derecho(b));
     }
-  if (elem!= natInfo(b->dato)){sub = NULL;}
-  }else sub = NULL;
-  return sub;
+  }
+  else return NULL;
 }
 
 

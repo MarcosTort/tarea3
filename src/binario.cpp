@@ -216,10 +216,10 @@ TBinario sub;
     if(elem == natInfo(b->dato)){
       sub = b;
     }
-    else if(elem>natInfo(b->dato)){
+    else if(elem<natInfo(b->dato)){
       sub = buscarSubarbol(elem, izquierdo(b));
     }
-    else if(elem<natInfo(b->dato)){
+    else if(elem>natInfo(b->dato)){
       sub = buscarSubarbol(elem, derecho(b));
     }
   if (elem!= natInfo(b->dato)){sub = NULL;}

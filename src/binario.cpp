@@ -215,10 +215,10 @@ TBinario sub;
       sub = b;
     }
     else if(elem>natInfo(b->dato)){
-      buscarSubarbol(elem, izquierdo(b));
+      sub = buscarSubarbol(elem, izquierdo(b));
     }
     else if(elem<natInfo(b->dato)){
-      buscarSubarbol(elem, derecho(b));
+      sub = buscarSubarbol(elem, derecho(b));
     }
   }else sub = NULL;
   return sub;

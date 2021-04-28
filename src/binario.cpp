@@ -49,16 +49,17 @@ TBinario insertarEnBinario(TInfo i, TBinario b){
 
   assert(esVacioBinario(buscarSubarbol(natInfo(i), b)));
 
-  if(!esVacioBinario(b)){
-    if(natInfo(i)<natInfo(b->dato)){return insertarEnBinario(i, b->izq);}
-    else 
-    {return insertarEnBinario(i, b->der);}
-  }
-  else{
+  if(esVacioBinario(b)){
     b = new _rep_binario;
     b->dato = i;
     b->izq = NULL;
     b->der = NULL;
+  }
+  else{
+    if(natInfo(i)<natInfo(b->dato)){
+      return insertarEnBinario(i, b->izq);}
+    else{
+      return insertarEnBinario(i, b->der);}
   }
   return b;
 }

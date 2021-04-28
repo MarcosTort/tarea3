@@ -184,8 +184,9 @@ bool esAvl(TBinario b){
   Precondición: ! esVacioBinario(b).
   El tiempo de ejecución es O(1).
  */
-TInfo raiz(TBinario b){assert(!esVacioBinario(b);return b->dato;}//LISTO
-
+TInfo raiz(TBinario b){
+  assert(!esVacioBinario(b));
+  return b->dato;}//LISTO
 /*
   Devuelve el subárbol izquierdo de 'b'.
   Precondición: ! esVacioBinario(b).

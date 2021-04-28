@@ -47,16 +47,15 @@ TBinario crearBinario(){
  */
 TBinario insertarEnBinario(TInfo i, TBinario b){
   if(!esVacioBinario(b)){
-    if(natInfo(i)<natInfo(b->dato)){insertarEnBinario(i, b->izq);}
+    if(natInfo(i)<natInfo(b->dato)){b = insertarEnBinario(i, b->izq);}
     else 
-    if(natInfo(i)>natInfo(b->dato)){insertarEnBinario(i, b->der);}
+    if(natInfo(i)>natInfo(b->dato)){b = insertarEnBinario(i, b->der);}
   }
   else{
-    TBinario bin = new _rep_binario;
-    bin->dato = i;
-    bin->izq = NULL;
-    bin->der = NULL;
-    b = bin;
+    TBinario  b = new _rep_binario;
+    b->dato = i;
+    b->izq = NULL;
+    b->der = NULL;
   }
   return b;
 }

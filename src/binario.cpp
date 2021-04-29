@@ -221,9 +221,11 @@ TBinario buscarSubarbol(nat elem, TBinario b){//LISTO
       return b;
     }
     else if(elem>natInfo(b->dato)){
+      assert(izquierdo(b)!= NULL);
       return buscarSubarbol(elem, izquierdo(b));
     }
     else{
+      assert(derecho(b)!= NULL);
       return buscarSubarbol(elem, derecho(b));
     }
   }

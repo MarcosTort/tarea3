@@ -59,8 +59,9 @@ TBinario insertarEnBinario(TInfo i, TBinario b){
   else{
     if(natInfo(i)<natInfo(b->dato)){
       return insertarEnBinario(i, b->izq);}
-    else{
+    else if (natInfo(i)>natInfo(b->dato)){
       return insertarEnBinario(i, b->der);}
+      else return NULL;
   }
 }
 //LISTO

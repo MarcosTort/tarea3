@@ -228,12 +228,14 @@ TBinario buscarSubarbol(nat elem, TBinario b){//LISTO
     else if(elem<natInfo(b->dato)){
       return buscarSubarbol(elem, izquierdo(b));
     }
-    else{
+    else if(elem>natInfo(b->dato)){
       return buscarSubarbol(elem, derecho(b));
     }
+    else return NULL;
   }
   else return NULL;
 }
+
 
 /*
   Devuelve la altura de 'b'.

@@ -75,10 +75,13 @@ TInfo mayor(TBinario b){//LISTO
   TInfo ret = b->dato;
   if (!esVacioBinario(b)){
     if(b->der == NULL){ret = b->dato;}
-    else{mayor(b->der);ret = b->dato;}
+    else{
+      mayor(b->der);
+      ret = b->dato;
+    }
   }
   return ret;
-;}
+}
 /*
   Remueve el nodo en el que se localiza el elemento mayor de 'b'
   (libera la memoria  asignada al nodo, pero no la del elemento).
@@ -88,14 +91,12 @@ TInfo mayor(TBinario b){//LISTO
   elementos de 'b'.
  */
 TBinario removerMayor(TBinario b){//LISTO
-  if(!esVacioBinario(b)){
     if( b->der == NULL){
       TBinario izquierda = b->izq;
       delete (b);
       b = izquierda;
     }
-    else{removerMayor(b->der);}
-  }
+    else b->der = removerMayor(b->der);
   return b;
 } 
 
@@ -116,18 +117,23 @@ TBinario removerMayor(TBinario b){//LISTO
 if (b != NULL ){
   if (natInfo(b->dato) == elem){
     if (b->der != NULL && b->izq != NULL){
+    TInfo aux = raiz(b);
     b->dato =  mayor(b->izq);
-    removerMayor(b->izq);
+    liberarInfo(aux);
+    b->izq = removerMayor(b->izq);
+    
     }
     else if (b->der == NULL && b->izq != NULL){
-    TBinario aucs = b;
+    TBinario aux = b;
     b = b->izq;
-    delete aucs;
+    liberarInfo(aux->dato);
+    delete aux;
     }
     else if (b->izq == NULL && b->der != NULL){
-    TBinario aucs = b;
+    TBinario aux = b;
     b = b->der;
-    delete aucs;
+    liberarInfo(aux->dato);
+    delete aux;
     }
   }
 else if (elem < natInfo(b->dato)) removerDeBinario(elem,b->izq);
@@ -190,10 +196,9 @@ bool esAvl(TBinario b){
   El tiempo de ejecución es O(1).
  */
 TInfo raiz(TBinario b){
-  if(!esVacioBinario(b)){
-  return b->dato;}
-  else return NULL;
+  return b->dato;
 }
+
 /*
   Devuelve el subárbol izquierdo de 'b'.
   Precondición: ! esVacioBinario(b).
@@ -220,18 +225,15 @@ TBinario buscarSubarbol(nat elem, TBinario b){//LISTO
     if(elem == natInfo(b->dato)){
       return b;
     }
-    else if(elem>natInfo(b->dato)){
-      assert(izquierdo(b)!= NULL);
+    else if(elem<natInfo(b->dato)){
       return buscarSubarbol(elem, izquierdo(b));
     }
     else{
-      assert(derecho(b)!= NULL);
       return buscarSubarbol(elem, derecho(b));
     }
   }
   else return NULL;
 }
-
 
 /*
   Devuelve la altura de 'b'.
@@ -264,7 +266,7 @@ nat cantidadBinario(TBinario b){//LISTO
   }
 }
 
-
+double sumaux(nat i, TBinario B){return 0;}//
 /*
   Devuelve la suma de los componentes reales de los últimos 'i' elementos
   (considerados según la propiedad de orden de los árboles TBinario)
@@ -297,12 +299,10 @@ TCadena lineaux(TCadena cad, TBinario b){//LISTO
   else return NULL;
 }
 TCadena linealizacion(TBinario b){//LISTO
-  if(!esVacioBinario(b)){
+ 
   TCadena cad = crearCadena();
   lineaux(cad, b);
     return cad;
-  }
-  else return NULL;
 }
 
 /*
@@ -323,8 +323,16 @@ TCadena linealizacion(TBinario b){//LISTO
   El tiempo de ejecución es O(n), siendo 'n' es la cantidad de elementos de 'b'.
  */
 TBinario menores(double cota, TBinario b){return NULL;} //ultimo
+/* si no es vacio binario de b entonces:
+creas dos binarios menor izquierdo y derecho (hago recursion con ellos) 
+si el real del info es menor que la cota
+sino (si es vacio el izuqierdo guardo auxiliar derecho
+      sino iguala al iquierdo
+sino guarda mayor de izq
+aux derecho = recursion derecho
+menor iquierdo = removermayor(recursion(menor iquierdo)
+aux izquierdo = recursion menor izq
 
-/*
   Imprime los elementos de 'b', uno por línea, en orden descendente de la
   propiedad de orden de los árboles 'TBinario'.
   Antes del elemento imprime una cantidad de guiones igual a su profundidad.
@@ -335,8 +343,7 @@ TBinario menores(double cota, TBinario b){return NULL;} //ultimo
   El tiempo de ejecución es O(n . log n) en promedio, siendo 'n' la cantidad
   de elementos de 'b'.
  */
-void imprimiraux(nat nivel, TBinario b);
-void imprimiraux(nat nivel, TBinario b) {
+ void imprimiraux(nat nivel, TBinario b) {
   if (!esVacioBinario(b)) {
     imprimiraux(nivel + 1, b->der);
     for (nat i = 1; i <= nivel; i++)
@@ -351,3 +358,4 @@ void imprimiraux(nat nivel, TBinario b) {
 void imprimirBinario(TBinario b){
  imprimiraux(0, b);
 }//FALTA
+

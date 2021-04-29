@@ -109,11 +109,11 @@ TBinario removerMayor(TBinario b){//LISTO
   El tiempo de ejecución es O(log n) en promedio, siendo 'n' la cantidad de
   elementos de 'b'.
  */
-TBinario removerDeBinario(nat elem, TBinario b);
+ TBinario removerDeBinario(nat elem, TBinario b);
  TBinario removerDeBinario(nat elem, TBinario b){//LISTO
 if (b != NULL ){
   if (natInfo(b->dato) == elem){
-    if (b->der != NULL && b->izq != NULL ||b->der == NULL && b->izq == NULL ){
+    if (((b->der != NULL )&& (b->izq != NULL) ||(b->der == NULL) && (b->izq == NULL))){
     TInfo aux = raiz(b);
     b->dato =  mayor(b->izq);
     liberarInfo(aux);

@@ -47,22 +47,22 @@ TBinario crearBinario(){
  */
 TBinario insertarEnBinario(TInfo i, TBinario b){
 
-  assert(esVacioBinario(buscarSubarbol(natInfo(i), b)));
 
   if(esVacioBinario(b)){
     b = new _rep_binario;
     b->dato = i;
     b->izq = NULL;
     b->der = NULL;
-    return b;
+    //return b;
   }
   else{
     if(natInfo(i)<natInfo(b->dato)){
-      return insertarEnBinario(i, b->izq);}
-    else if (natInfo(i)>natInfo(b->dato)){
-      return insertarEnBinario(i, b->der);}
-      else return NULL;
+      b->izq = insertarEnBinario(i, b->izq);}
+    else{
+      b->der = insertarEnBinario(i, b->der);}
+  
   }
+  return b;
 }
 //LISTO
 /*

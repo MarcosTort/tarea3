@@ -346,7 +346,7 @@ aux izquierdo = recursion menor izq
   if (!esVacioBinario(b)) {
     imprimiraux(nivel + 1, b->der);
     printf("\n");
-    for (nat i = 1; i <= nivel; i++)
+    for (nat i = 0; i < nivel; i++)
       printf("-");
     char *infotxt = infoATexto(b->dato);
     printf("%s", infotxt);

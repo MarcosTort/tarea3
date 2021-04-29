@@ -342,15 +342,18 @@ aux izquierdo = recursion menor izq
   El tiempo de ejecución es O(n . log n) en promedio, siendo 'n' la cantidad
   de elementos de 'b'.
  */
- void imprimiraux(nat nivel, TBinario b) {
-  if (!esVacioBinario(b)) {
-    imprimiraux(nivel + 1, b->der);
+  void aux2(nat nivel, TBinario b){
     printf("\n");
-    for (nat i = 0; i < nivel; i++)
+    for (nat i = 0; i <nivel; i++)
       printf("-");
     char *infotxt = infoATexto(b->dato);
     printf("%s", infotxt);
     delete [] infotxt;
+  }
+ void imprimiraux(nat nivel, TBinario b) {
+  if (!esVacioBinario(b)) {
+    imprimiraux(nivel + 1, b->der);
+    aux2(nivel, b);
     imprimiraux(nivel + 1, b->izq);
     
   }

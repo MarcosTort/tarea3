@@ -332,5 +332,33 @@ TBinario menores(double cota, TBinario b){return NULL;} //ultimo
   El tiempo de ejecución es O(n . log n) en promedio, siendo 'n' la cantidad
   de elementos de 'b'.
  */
-void imprimirBinario(TBinario b){}//FALTA
+void imprimirAux(nat &cont, TBinario);
+void imprimirAux(nat &cont, TBinario b){
+  if (!esVacioBinario(b)) {
+
+			cont++;
+				imprimirAux(cont, b->der);
+			cont--; 
+
+			int i = cont;
+			while (i > 0) {
+				printf("-");
+				i--;
+			}
+
+			char *info = infoATexto(b->dato);
+			printf("%s", info);
+			printf("\n");
+			delete[] info;	
+			cont++;
+				imprimirAux(cont, b->izq);
+			cont--; 
+		} 
+
+}
+void imprimirBinario(TBinario b){
+  printf("\n");
+  nat guion= 0;
+  imprimirAux(guion, b);
+}//FALTA
 

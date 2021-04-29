@@ -113,7 +113,7 @@ TBinario removerMayor(TBinario b){//LISTO
  TBinario removerDeBinario(nat elem, TBinario b){//LISTO
 if (b != NULL ){
   if (natInfo(b->dato) == elem){
-    if (((b->der != NULL )&& (b->izq != NULL) ||(b->der == NULL) && (b->izq == NULL))){
+    if ((b->der != NULL && b->izq != NULL) ||(b->der == NULL && b->izq == NULL)){
     TInfo aux = raiz(b);
     b->dato =  mayor(b->izq);
     liberarInfo(aux);

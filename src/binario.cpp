@@ -114,13 +114,13 @@ TBinario removerMayor(TBinario b){//LISTO
 if (b != NULL ){
   if (natInfo(b->dato) == elem){
     
-    if (b->der == NULL && b->izq != NULL){
+    if (b->der == NULL){
     TBinario aux = b;
     b = b->izq;
     liberarInfo(aux->dato);
     delete aux;
     }
-    else if (b->izq == NULL && b->der != NULL){
+    else if (b->izq == NULL){
     TBinario aux = b;
     b = b->der;
     liberarInfo(aux->dato);
@@ -132,6 +132,7 @@ if (b != NULL ){
     liberarInfo(aux);
     b->izq = removerMayor(b->izq);
     }
+    //if(b->der == NULL && b->izq == NULL)
   }
 else if (elem < natInfo(b->dato)) b->izq = removerDeBinario(elem,b->izq);
 else b->der = removerDeBinario(elem,b->der);

@@ -345,16 +345,19 @@ aux izquierdo = recursion menor izq
  void imprimiraux(nat nivel, TBinario b) {
   if (!esVacioBinario(b)) {
     imprimiraux(nivel + 1, b->der);
+    printf("\n");
     for (nat i = 1; i <= nivel; i++)
       printf("-");
     char *infotxt = infoATexto(b->dato);
     printf("%s", infotxt);
     delete [] infotxt;
-    printf("\n");
     imprimiraux(nivel + 1, b->izq);
+    
   }
 } // imprimir_aux
 void imprimirBinario(TBinario b){
  imprimiraux(0, b);
+ printf("\n");
 }//FALTA
+
 

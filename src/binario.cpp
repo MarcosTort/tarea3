@@ -72,14 +72,11 @@ TBinario insertarEnBinario(TInfo i, TBinario b){
   elementos de 'b'.
  */
 TInfo mayor(TBinario b){//LISTO
-  TInfo ret = b->dato;
-  if (!esVacioBinario(b)){
+  TInfo ret;
     if(b->der == NULL){ret = b->dato;}
     else{
-      mayor(b->der);
-      ret = b->dato;
+      ret = mayor(b->der);
     }
-  }
   return ret;
 }
 /*

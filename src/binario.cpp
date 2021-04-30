@@ -339,32 +339,38 @@ TCadena linealizacion(TBinario b){//LISTO
   El árbol resultado no comparte memoria con 'b'. *)
   El tiempo de ejecución es O(n), siendo 'n' es la cantidad de elementos de 'b'.
  */
-TBinario menores(nat cota, TBinario b){
-TBinario res, bizq,bder;
-if (b == NULL) return NULL;
-bizq = menores (cota, b->izq);
-bder = menores (cota, b->der);
-if (natInfo(b->dato) > cota ){
-res = new _rep_binario;
-res->dato = b->dato;
-res->izq = bizq;
-res->der = bder;
+TBinario menores(double cota, TBinario b)
+{
+  TBinario res, bizq, bder;
+  if (b == NULL)
+    return NULL;
+  bizq = menores(cota, b->izq);
+  bder = menores(cota, b->der);
+  if (realInfo(b->dato) > cota)
+  {
+    res = new _rep_binario;
+    res->dato = b->dato;
+    res->izq = bizq;
+    res->der = bder;
+  }
+  else
+  {
+    if (bizq == NULL)
+      res = bder;
+    else if (bder == NULL)
+      res = bizq;
+    else
+    {
+      TInfo may = mayor(bizq);
+      removerMayor(bizq);
+      res = new _rep_binario;
+      res->dato = may;
+      res->izq = bizq;
+      res->der = bder;
+    }
+  }
+  return res;
 }
-else{
-if (bizq == NULL) res = bder;
-else if (bder == NULL) res = bizq;
-else {
-TInfo may = mayor(bizq);
-removerMayor (bizq);
-res = new _rep_binario;
-res->dato = may;
-res->izq = bizq;
-res->der = bder;
-}
-}
-return res;
-}
-}  //ultimo
 /* si no es vacio binario de b entonces:
 creas dos binarios menor izquierdo y derecho (hago recursion con ellos) 
 si el real del info es menor que la cota

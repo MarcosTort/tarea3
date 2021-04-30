@@ -173,7 +173,7 @@ static int absolut(int n){
 }
 bool esAvl(TBinario b);
 bool esAvl(TBinario b){
-  
+bool aux = true;
   if (b == NULL)
  return true;
 
@@ -181,17 +181,18 @@ bool esAvl(TBinario b){
   return true;
 
   else if (b->izq != NULL && b->der==NULL)
-  return (alturaBinario(b->izq) == 0);
+  aux = (alturaBinario(b->izq) == 0);
 
   else if (b->izq == NULL && b->der!=NULL)
-  return (alturaBinario(b->der) == 0);
+  aux = (alturaBinario(b->der) == 0);
 
  else {
  //los dos son no nulos
   if (absolut(alturaBinario(b->izq) - alturaBinario(b->der))>1 )
   return false;
- else return (esAvl(b->izq) && esAvl(b->der));
+ else aux = (esAvl(b->izq) && esAvl(b->der));
 }
+return aux;
 }
 
 /*

@@ -288,7 +288,7 @@ double sumaux(nat i, TBinario B){return 0;}//
  */
 double sumaUltimosPositivos(nat i, TBinario b){
   int res = 0;
-  int cont = 0;
+  nat cont = 0;
   if (cont<i && realInfo(raiz(b)) >0){
     res = res + realInfo(raiz(b));
     cont++;

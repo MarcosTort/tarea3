@@ -192,6 +192,7 @@ bool aux = true;
   aux = false;
  else aux = (esAvl(b->izq) && esAvl(b->der));
 }
+if(alturaBinario(b->izq) == alturaBinario(b->der)) aux = true;
 return aux;
 }
 

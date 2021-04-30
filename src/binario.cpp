@@ -339,7 +339,40 @@ TCadena linealizacion(TBinario b){//LISTO
   El árbol resultado no comparte memoria con 'b'. *)
   El tiempo de ejecución es O(n), siendo 'n' es la cantidad de elementos de 'b'.
  */
-TBinario menores(double cota, TBinario b){return NULL;} //ultimo
+TBinario insertar(TInfo info, TBinario izq, TBinario der) {
+
+TBinario nuevo = new _rep_binario;
+nuevo->dato = copiaInfo(info);
+nuevo->der = der;
+nuevo->izq = izq;
+return nuevo;
+}
+TBinario menores(double cota, TBinario b){
+  TBinario arbolizq;
+  TBinario arbolder;
+  TInfo datoRaiz;
+  TBinario men = crearBinario();
+  if (!esVacioBinario(b)){
+    arbolizq = menores(cota, izquierdo(b));
+    arbolder = menores(cota, derecho(b));
+    datoRaiz = raiz(b);
+    if((cota> natInfo(datoRaiz))){
+      return insertar(datoRaiz, arbolizq, arbolder);
+    }
+    else if (esVacioBinario(arbolizq)){
+      return arbolder;
+    }
+    else if(esVacioBinario(arbolder)){
+      return arbolizq;
+    }
+    else{
+      TBinario res;
+      res = insertar(datoRaiz, arbolizq, arbolder);
+      return res;
+    }
+  } 
+  else return NULL;
+}  //ultimo
 /* si no es vacio binario de b entonces:
 creas dos binarios menor izquierdo y derecho (hago recursion con ellos) 
 si el real del info es menor que la cota

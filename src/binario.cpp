@@ -294,8 +294,10 @@ double sumaUltimosPositivos(nat i, TBinario b){
       printf("La posicion es: ");
       printf("%i", natInfo(raiz(b)));
       printf("\n");
-      res = res + realInfo(raiz(b));
-      i--;
+      if(natInfo(raiz(b))>= natInfo(mayor(b))-i){
+        res = res + realInfo(raiz(b));
+        i--;
+        }
       }
     res = res + sumaUltimosPositivos(i, b->izq);
     }

@@ -286,25 +286,20 @@ double sumaux(nat i, TBinario B){return 0;}//
   'i' elementos.
   El tiempo de ejecución es O(n), siendo 'n' la cantidad de elementos de 'b'.
  */
+
+void sumaux(nat &n, TBinario b, double &a){
+  if(!esVacioBinario(b)){
+    if (n>0 && realInfo(raiz(b)) >0){
+      a = a + realInfo(raiz(b));
+      n--;
+      }
+    sumaux(n, b->der, a);
+    sumaux(n, b->izq, a);
+    }
+}
 double sumaUltimosPositivos(nat i, TBinario b){
   double res = 0.0;
-  if(!esVacioBinario(b)){
-    res = res + sumaUltimosPositivos(i, b->der);
-    if (i>0 && realInfo(raiz(b)) >0){
-      printf("La posicion es: ");
-      printf("%i", natInfo(raiz(b)));
-      printf("\n");
-      if(natInfo(raiz(b))>= natInfo(mayor(b))-i){
-        printf("La posicion que suma es: ");
-        printf("%i", natInfo(raiz(b)));
-        printf("\n");
-        res = res + realInfo(raiz(b));
-        i--;
-        }
-      }
-    res = res + sumaUltimosPositivos(i, b->izq);
-    }
-    
+  sumaux(i, b, res); 
   return res;
 }
 

@@ -289,16 +289,17 @@ double sumaux(nat i, TBinario B){return 0;}//
 double sumaUltimosPositivos(nat i, TBinario b){
   double res = 0.0;
   if(!esVacioBinario(b)){
-    printf("entra primer if");
+    
     if (i>0 && realInfo(raiz(b)) >0){
-      printf("entra segundo if");
+      
       res = res + realInfo(raiz(b));
       i--;
       }
-    res = sumaUltimosPositivos(i, b->der);
-    res = sumaUltimosPositivos(i, b->izq);
+    res = res + sumaUltimosPositivos(i, b->der);
+    res = res + sumaUltimosPositivos(i, b->izq);
+
     }
-    printf("termina positivos");
+    
   return res;
 }
 /*

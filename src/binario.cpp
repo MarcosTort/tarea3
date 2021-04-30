@@ -287,7 +287,7 @@ double sumaux(nat i, TBinario B){return 0;}//
   El tiempo de ejecución es O(n), siendo 'n' la cantidad de elementos de 'b'.
  */
 double sumaUltimosPositivos(nat i, TBinario b){
-  int res = 0;
+  double res = 0;
   if(!esVacioBinario(b)){
     if (i>0 && realInfo(raiz(b)) >0){
       res = res + realInfo(raiz(b));

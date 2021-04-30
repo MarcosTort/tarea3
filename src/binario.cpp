@@ -346,7 +346,7 @@ TBinario menores(double cota, TBinario b)
     return NULL;
   bizq = menores(cota, b->izq);
   bder = menores(cota, b->der);
-  if (realInfo(b->dato) > cota)
+  if (realInfo(b->dato) < cota)
   {
     res = new _rep_binario;
     res->dato = b->dato;

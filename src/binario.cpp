@@ -175,10 +175,10 @@ bool esAvl(TBinario b);
 bool esAvl(TBinario b){
 bool aux = true;
   if (b == NULL)
- return true;
+ aux = true;
 
   else if (b->izq== NULL && b->der==NULL)
-  return true;
+  aux = true;
 
   else if (b->izq != NULL && b->der==NULL)
   aux = (alturaBinario(b->izq) == 0);
@@ -189,7 +189,7 @@ bool aux = true;
  else {
  //los dos son no nulos
   if (absolut(alturaBinario(b->izq) - alturaBinario(b->der))>1 )
-  return false;
+  aux = false;
  else aux = (esAvl(b->izq) && esAvl(b->der));
 }
 return aux;

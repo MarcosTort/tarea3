@@ -351,7 +351,6 @@ TBinario menores(double cota, TBinario b){
   TBinario arbolizq;
   TBinario arbolder;
   TInfo datoRaiz;
-  TBinario men = crearBinario();
   if (!esVacioBinario(b)){
     arbolizq = menores(cota, izquierdo(b));
     arbolder = menores(cota, derecho(b));

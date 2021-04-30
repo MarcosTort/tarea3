@@ -174,16 +174,13 @@ bool esAvl(TBinario b){
  return true;
   else if (b->izq== NULL && b->der==NULL)
   return true;
-  
   else if (b->izq != NULL && b->der==NULL)
   return (alturaBinario(b->izq) == 0);
-  
   else if (b->izq == NULL && b->der!=NULL)
   return (alturaBinario(b->der) == 0);
-  
  else {
  //los dos son no nulos
-  if (abs(alturaBinario(b->izq) - alturaBinario(b->der))>1)
+  if ((alturaBinario(b->izq) - alturaBinario(b->der))>1 || (alturaBinario(b->izq) - alturaBinario(b->der)) < -1 )
   return false;
  else return (esAvl(b->izq) && esAvl(b->der));
 }

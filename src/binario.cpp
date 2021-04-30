@@ -289,15 +289,15 @@ double sumaux(nat i, TBinario B){return 0;}//
 double sumaUltimosPositivos(nat i, TBinario b){
   double res = 0.0;
   if(!esVacioBinario(b)){
-    res = res + sumaUltimosPositivos(i, b->der);
+    sumaUltimosPositivos(i, b->der);
     if (i>0 && realInfo(raiz(b)) >0){
-     // printf("La posicion es: ");
-      //printf("%i", natInfo(raiz(b)));
-     // printf("\n");
+      printf("La posicion es: ");
+      printf("%i", natInfo(raiz(b)));
+      printf("\n");
       res = res + realInfo(raiz(b));
       i--;
       }
-    res = res + sumaUltimosPositivos(i, b->izq);
+    sumaUltimosPositivos(i, b->izq);
     }
     
   return res;

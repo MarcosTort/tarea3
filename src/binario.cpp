@@ -289,11 +289,11 @@ double sumaux(nat i, TBinario B){return 0;}//
 
 void sumaux(nat &n, TBinario b, double &a){
   if(!esVacioBinario(b)){
+    sumaux(n, b->der, a);
     if (n>0 && realInfo(raiz(b)) >0){
       a = a + realInfo(raiz(b));
       n--;
       }
-    sumaux(n, b->der, a);
     sumaux(n, b->izq, a);
     }
 }
@@ -302,7 +302,6 @@ double sumaUltimosPositivos(nat i, TBinario b){
   sumaux(i, b, res); 
   return res;
 }
-
 
 /*
   Devuelve una 'TCadena' con los elementos de 'b' en orden creciente según

@@ -288,16 +288,16 @@ double sumaux(nat i, TBinario B){return 0;}//
  */
 double sumaUltimosPositivos(nat i, TBinario b){
   double res = 0.0;
+  if(!esVacioBinario(b)){
     if (i>0 && realInfo(raiz(b)) >0){
       res = res + realInfo(raiz(b));
       i--;
       }
     res = sumaUltimosPositivos(i, b->der);
     res = sumaUltimosPositivos(i, b->izq);
-  
+    }
   return res;
 }
-
 /*
   Devuelve una 'TCadena' con los elementos de 'b' en orden creciente según
   sus componentes naturales.

@@ -19,6 +19,8 @@
 #include <stdio.h>
 #include <stddef.h>
 #include <stdlib.h>
+#include<cmath>
+
 // Representación de 'TBinario'.
 // Se debe definir en binario.cpp.
 // struct _rep_binario;
@@ -180,7 +182,7 @@ bool esAvl(TBinario b){
   return (alturaBinario(b->der) == 0);
  else {
  //los dos son no nulos
-  if ((alturaBinario(b->izq) - alturaBinario(b->der))>1 || (alturaBinario(b->izq) - alturaBinario(b->der)) < -1 )
+  if ((alturaBinario(b->izq) - alturaBinario(b->der))>1 || (alturaBinario(b->der) - alturaBinario(b->izq))>1)
   return false;
  else return (esAvl(b->izq) && esAvl(b->der));
 }

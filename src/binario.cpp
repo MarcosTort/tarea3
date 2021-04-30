@@ -288,17 +288,14 @@ double sumaux(nat i, TBinario B){return 0;}//
  */
 double sumaUltimosPositivos(nat i, TBinario b){
   int res = 0;
-  nat cont = 0;
-  if (cont<i && realInfo(raiz(b)) >0){
-    res = res + realInfo(raiz(b));
-    cont++;
-  }
   if(!esVacioBinario(b)){
+    if (i>0 && realInfo(raiz(b)) >0){
+      res = res + realInfo(raiz(b));
+      i--;
+      }
     res = sumaUltimosPositivos(i, b->der);
-    if(cont<i){
-      res = sumaUltimosPositivos(i, b->izq);
+    res = sumaUltimosPositivos(i, b->izq);
     }
-  }
   return res;
 }
 

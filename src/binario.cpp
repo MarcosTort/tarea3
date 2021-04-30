@@ -298,6 +298,7 @@ double sumaUltimosPositivos(nat i, TBinario b){
     res = sumaUltimosPositivos(i, b->der);
     res = sumaUltimosPositivos(i, b->izq);
     }
+    printf("termina positivos");
   return res;
 }
 /*

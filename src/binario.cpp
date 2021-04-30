@@ -295,12 +295,12 @@ double sumaUltimosPositivos(nat i, TBinario b){
   }
   if(!esVacioBinario(b)){
     res = sumaUltimosPositivos(i, b->der);
-    if(cont<i)
+    if(cont<i){
       res = sumaUltimosPositivos(i, b->izq);
-  } 
+    }
+  }
   return res;
 }
-} //ultimo
 
 /*
   Devuelve una 'TCadena' con los elementos de 'b' en orden creciente según

@@ -296,6 +296,8 @@ double sumaUltimosPositivos(nat i, TBinario b){
       printf("\n");
       if(natInfo(raiz(b))>= natInfo(mayor(b))-i){
         printf("La posicion que suma es: ");
+        printf("%i", natInfo(raiz(b)));
+        printf("\n");
         res = res + realInfo(raiz(b));
         i--;
         }
@@ -305,6 +307,7 @@ double sumaUltimosPositivos(nat i, TBinario b){
     
   return res;
 }
+
 
 /*
   Devuelve una 'TCadena' con los elementos de 'b' en orden creciente según

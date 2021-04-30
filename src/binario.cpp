@@ -291,7 +291,9 @@ double sumaUltimosPositivos(nat i, TBinario b){
   if(!esVacioBinario(b)){
     
     if (i>0 && realInfo(raiz(b)) >0){
-      
+      printf("La posicion es: ");
+      printf("%i", natInfo(raiz(b)));
+      printf("\n");
       res = res + realInfo(raiz(b));
       i--;
       }

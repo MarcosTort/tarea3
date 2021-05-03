@@ -353,7 +353,7 @@ TBinario menores(double cota, TBinario b)
     if (realInfo(b->dato) < cota)
     {
       res = new _rep_binario;
-      res->dato = b->dato;
+      res->dato = copiaInfo( b->dato);
       res->izq = bizq;
       res->der = bder;
     }
@@ -367,11 +367,9 @@ TBinario menores(double cota, TBinario b)
       {
         TInfo may = mayor(bizq);
         res = new _rep_binario;
-        res->dato = may;
-        res->izq = bizq;
+        res->dato = copiaInfo( b->dato);        res->izq = bizq;
         res->der = bder;
         removerDeBinario(natInfo(res->dato), res);
-
       }
     }
   } else res = NULL;  

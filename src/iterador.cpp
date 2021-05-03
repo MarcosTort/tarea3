@@ -127,12 +127,12 @@ bool estaDefinidaActual(TIterador iter){
   de elementos de 'iter'.
  */
 void liberarIterador(TIterador iter){
-  if( iter != NULL){
+  iter->actual = iter->inicio;
     while (estaDefinidaActual(iter)){
       nodoIt *a = iter->inicio;
       avanzarIterador(iter);
       delete a;
     }
     delete iter;
+    iter = NULL;
   }
-};

@@ -345,34 +345,37 @@ TCadena linealizacion(TBinario b){//LISTO
  */
 TBinario menores(double cota, TBinario b)
 {
-  TBinario res, bizq, bder;
-  if (b == NULL || cota == 0)
-    return NULL;
-  bizq = menores(cota, b->izq);
-  bder = menores(cota, b->der);
-  if (realInfo(b->dato) < cota)
-  {
-    res = new _rep_binario;
-    res->dato = b->dato;
-    res->izq = bizq;
-    res->der = bder;
-  }
-  else
-  {
-    if (bizq == NULL)
-      res = bder;
-    else if (bder == NULL)
-      res = bizq;
-    else
+  TBinario res;
+  if (cota>0){
+    TBinario bizq, bder;
+    if (b == NULL)
+      return NULL;
+    bizq = menores(cota, b->izq);
+    bder = menores(cota, b->der);
+    if (realInfo(b->dato) < cota)
     {
-      TInfo may = mayor(bizq);
-      removerMayor(bizq);
       res = new _rep_binario;
-      res->dato = may;
+      res->dato = b->dato;
       res->izq = bizq;
       res->der = bder;
     }
-  }
+    else
+    {
+      if (bizq == NULL)
+        res = bder;
+      else if (bder == NULL)
+        res = bizq;
+      else
+      {
+        TInfo may = mayor(bizq);
+        removerMayor(bizq);
+        res = new _rep_binario;
+        res->dato = may;
+        res->izq = bizq;
+        res->der = bder;
+      }
+    }
+  } else res = NULL;  
   return res;
 }
 /* si no es vacio binario de b entonces:

@@ -346,10 +346,8 @@ TCadena linealizacion(TBinario b){//LISTO
 TBinario menores(double cota, TBinario b)
 {
   TBinario res;
-  if (cota>0){
+  if (cota>0 || b != NULL){
     TBinario bizq, bder;
-    if (b == NULL)
-      return NULL;
     bizq = menores(cota, b->izq);
     bder = menores(cota, b->der);
     if (realInfo(b->dato) < cota)
@@ -368,11 +366,11 @@ TBinario menores(double cota, TBinario b)
       else
       {
         TInfo may = mayor(bizq);
-        removerMayor(bizq);
         res = new _rep_binario;
         res->dato = may;
         res->izq = bizq;
         res->der = bder;
+        removerMayor(bizq);
       }
     }
   } else res = NULL;  

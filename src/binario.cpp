@@ -365,7 +365,7 @@ TBinario menores(double cota, TBinario b)
         res = bizq;
       else
       {
-        TInfo may = mayor(bizq);
+    
         res = new _rep_binario;
         res->dato = copiaInfo( b->dato);        res->izq = bizq;
         res->der = bder;

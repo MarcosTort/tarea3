@@ -1,4 +1,4 @@
-# Prueba de esVacioBinario, raiz, izquierdo, derecho, buscarSubarbol
+# Prueba de esVacioBinario, insertarEnBinario, raiz, izquierdo, derecho, buscarSubarbol
 buscarSubarbol 1
 esVacioBinario
 insertarEnBinario (1,1.1)

@@ -232,7 +232,7 @@ int main() {
       liberarCadena(lineal);
 
     } else if (0 == strcmp(nom_comando, "menores")) {
-      nat clave = leerNat();
+      double clave = leerDouble();
       TBinario filtro = menores(clave, b);
       imprimirBinario(filtro);
       liberarBinario(filtro);

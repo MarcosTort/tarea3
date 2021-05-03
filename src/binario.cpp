@@ -148,6 +148,7 @@ void liberarBinario(TBinario b){//LISTO
   if(b != NULL){
   liberarBinario(b->der);
   liberarBinario(b->izq);
+  liberarInfo(b->dato);
   delete b;
   }
 }

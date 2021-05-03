@@ -134,5 +134,4 @@ void liberarIterador(TIterador iter){
       delete a;
     }
     delete iter;
-    iter = NULL;
   }

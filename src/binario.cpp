@@ -370,7 +370,8 @@ TBinario menores(double cota, TBinario b)
         res->dato = may;
         res->izq = bizq;
         res->der = bder;
-        removerMayor(bizq);
+        removerDeBinario(natInfo(res->dato), res);
+
       }
     }
   } else res = NULL;  

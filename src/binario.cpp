@@ -346,7 +346,7 @@ TCadena linealizacion(TBinario b){//LISTO
 TBinario menores(double cota, TBinario b)
 {
   TBinario res, bizq, bder;
-  if (b == NULL)
+  if (b == NULL || cota == 0)
     return NULL;
   bizq = menores(cota, b->izq);
   bder = menores(cota, b->der);

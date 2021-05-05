@@ -22,11 +22,10 @@ TCadena nivelEnBinario(nat l, TBinario b){
       printf("entra en el nivel");
       printf("%i",l);
       printf("\n");
-      ret = insertarAlFinal(copiaInfo(raiz(b)), ret);
+      insertarAlFinal(copiaInfo(raiz(b)), ret);
       printf("###############");
       printf("\n");
       imprimirCadena(ret);
-      printf("\n");
       printf("###############");
       printf("\n");
 

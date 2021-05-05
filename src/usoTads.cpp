@@ -13,28 +13,21 @@
   El tiempo de ejecución en el peor caso es O(n), siendo 'n' la cantidad de
   elementos de 'cad'.
  */
-TCadena nivelEnBinario(nat l, TBinario b){
-  TCadena ret = crearCadena();
+void rellenarCadena(nat l,TCadena &c, TBinario b){
   if(!esVacioBinario(b)){
-    printf("No es vacio");
-    printf("\n");
-    if(alturaBinario(b) == l){
-      printf("entra en el nivel");
-      printf("%i",l);
-      printf("\n");
-      insertarAlFinal(copiaInfo(raiz(b)), ret);
-      printf("###############");
-      printf("\n");
-      imprimirCadena(ret);
-      printf("###############");
-      printf("\n");
-
+    if(l == alturaBinario(b)){ 
+    insertarAlFinal(copiaInfo(raiz(b)), c);
     }
     else{
-    ret = nivelEnBinario(l, derecho(b));
-    ret = nivelEnBinario(l, izquierdo(b));
-   }
+      rellenarCadena(l, c, derecho(b));
+      rellenarCadena(l, c, izquierdo(b));
+    }
   }
+}
+TCadena nivelEnBinario(nat l, TBinario b){
+  TCadena ret = crearCadena();
+  rellenarCadena(l, ret, b);
+  ordenar(ret);
   return ret;
 }
 bool esCamino(TCadena c, TBinario b){return false;}

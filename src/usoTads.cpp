@@ -16,8 +16,13 @@
 TCadena nivelEnBinario(nat l, TBinario b){
   TCadena ret = crearCadena();
   if(!esVacioBinario(b)){
+    printf("No es vacio");
+    printf("\n");
     ret = nivelEnBinario(l, derecho(b));
     if(alturaBinario(b) == l){
+      printf("entra en el nivel");
+      printf("%i",l);
+      printf("\n");
       ret = insertarAlFinal(copiaInfo(raiz(b)), ret);
     }
     ret = nivelEnBinario(l, izquierdo(b));

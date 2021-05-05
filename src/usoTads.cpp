@@ -18,14 +18,17 @@ TCadena nivelEnBinario(nat l, TBinario b){
   if(!esVacioBinario(b)){
     printf("No es vacio");
     printf("\n");
-    ret = nivelEnBinario(l, derecho(b));
     if(alturaBinario(b) == l){
       printf("entra en el nivel");
       printf("%i",l);
       printf("\n");
       ret = insertarAlFinal(copiaInfo(raiz(b)), ret);
+
     }
+    else{
+    ret = nivelEnBinario(l, derecho(b));
     ret = nivelEnBinario(l, izquierdo(b));
+   }
   }
   return ret;
 }

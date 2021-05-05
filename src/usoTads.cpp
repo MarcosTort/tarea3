@@ -18,7 +18,7 @@ TCadena nivelEnBinario(nat l, TBinario b){
   if(!esVacioBinario(b)){
     ret = nivelEnBinario(l, derecho(b));
     if(alturaBinario(b) == l){
-      insertarAlFinal(copiaInfo(raiz(b)), ret);
+      ret = insertarAlFinal(copiaInfo(raiz(b)), ret);
     }
     ret = nivelEnBinario(l, izquierdo(b));
   }

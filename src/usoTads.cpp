@@ -14,7 +14,15 @@
   elementos de 'cad'.
  */
 TCadena nivelEnBinario(nat l, TBinario b){
-  return NULL;
+  TCadena ret = crearCadena();
+  if(!esVacioBinario(b)){
+    ret = nivelEnBinario(l, derecho(b));
+    if(alturaBinario(b) == l){
+      insertarAlFinal(copiaInfo(raiz(b)), ret);
+    }
+    ret = nivelEnBinario(l, izquierdo(b));
+  }
+  return ret;
 }
 bool esCamino(TCadena c, TBinario b){return false;}
 

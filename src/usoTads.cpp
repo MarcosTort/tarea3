@@ -23,7 +23,9 @@ TCadena nivelEnBinario(nat l, TBinario b){
       printf("%i",l);
       printf("\n");
       ret = insertarAlFinal(copiaInfo(raiz(b)), ret);
+      printf("###############");
       imprimirCadena(ret);
+      printf("###############");
 
     }
     else{

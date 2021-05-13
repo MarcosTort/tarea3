@@ -40,19 +40,20 @@ if (esVacioBinario(b)) {
 }
 
 void avanzarLoc(TLocalizador &loc, TCadena cad){
+  if (siguiente(loc, cad) != NULL)
   loc = siguiente(loc, cad);
 }
 bool esCaminoaux(TLocalizador &l, TCadena c, TBinario b){
- bool ret;
 if(c == NULL && b == NULL) 
-  ret = true;
+  return true;
 else if(c == NULL || b == NULL) 
-  ret = false;
+  return false;
 else{
+ bool ret;
+ ret = (natInfo(raiz(b)) == natInfo(infoCadena(l, c)));
+ return ret;
+  }
 
-ret = (natInfo(raiz(b)) == natInfo(infoCadena(l, c)));
-}
-return ret;
 }
 bool esCamino(TCadena c, TBinario b){
 bool ret;

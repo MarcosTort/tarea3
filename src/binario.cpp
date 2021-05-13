@@ -181,15 +181,21 @@ bool aux = true;
   aux = true;
 
   else if (b->izq != NULL && b->der==NULL)
-  aux = (alturaBinario(b->izq) == 0);
-
+  {
+  aux = (alturaBinario(b->izq) < 2);
+ 
+  }
   else if (b->izq == NULL && b->der!=NULL)
-  aux = (alturaBinario(b->der) == 0);
-
+  {
+  aux = (alturaBinario(b->der) < 2);
+  
+  }
  else {
  //los dos son no nulos
-  if (absolut(alturaBinario(b->izq) - alturaBinario(b->der))>1 )
-  aux = false;
+  if (absolut(alturaBinario(b->izq) - alturaBinario(b->der))>1 ){
+  
+  aux = false;}
+
  else aux = (esAvl(b->izq) && esAvl(b->der));
 }
 if(alturaBinario(b->izq) == alturaBinario(b->der)) aux = true;

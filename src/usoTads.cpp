@@ -13,24 +13,57 @@
   El tiempo de ejecución en el peor caso es O(n), siendo 'n' la cantidad de
   elementos de 'cad'.
  */
-void rellenarCadena(nat l,TCadena &c, TBinario b){
+void rellenarCadena(nat l, nat cont,TCadena &c, TBinario b){
   if(!esVacioBinario(b)){
-    if(l == alturaBinario(b)){ 
+    if(l == cont ){ 
     insertarAlFinal(copiaInfo(raiz(b)), c);
     }
     else{
-      rellenarCadena(l, c, derecho(b));
-      rellenarCadena(l, c, izquierdo(b));
+      cont ++;
+      rellenarCadena(l, cont, c, derecho(b));
+      rellenarCadena(l, cont, c, izquierdo(b));
     }
   }
 }
 TCadena nivelEnBinario(nat l, TBinario b){
   TCadena ret = crearCadena();
-  rellenarCadena(l, ret, b);
+  rellenarCadena(l,1, ret, b);
   ordenar(ret);
   return ret;
 }
-bool esCamino(TCadena c, TBinario b){return false;}
+bool esHoja(TBinario b){
+if (esVacioBinario(b)) {
+	return true;
+  } else {
+	return ((esVacioBinario(derecho(b))) && (esVacioBinario(izquierdo(b))));
+  }
+}
+
+void avanzarLoc(TLocalizador &loc, TCadena cad){
+  loc = siguiente(loc, cad);
+}
+bool esCaminoaux(TLocalizador &l, TCadena c, TBinario b){
+ bool ret;
+if(c == NULL && b == NULL) 
+  ret = true;
+else if(c == NULL || b == NULL) 
+  ret = false;
+else{
+
+ret = (natInfo(raiz(b)) == natInfo(infoCadena(l, c)));
+}
+return ret;
+}
+bool esCamino(TCadena c, TBinario b){
+bool ret;
+TLocalizador loc = inicioCadena(c);
+if (esCaminoaux(loc, c, b)){
+  avanzarLoc(loc, c);
+  ret = esCaminoaux(loc, c, derecho(b)) || esCaminoaux(loc, c, izquierdo(b));
+}
+else ret = false;
+return ret&&esHoja(buscarSubarbol( natInfo( infoCadena( finalCadena(c), c) ) , b));
+}
 
 bool pertenece(nat elem, TCadena cad){
   TLocalizador rec = inicioCadena(cad);

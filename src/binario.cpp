@@ -175,33 +175,27 @@ bool esAvl(TBinario b);
 bool esAvl(TBinario b){
 bool aux = true;
   if (b == NULL)
- aux = true;
+  return true;
 
   else if (b->izq== NULL && b->der==NULL)
-  aux = true;
+  return true;
 
   else if (b->izq != NULL && b->der==NULL)
-  {
   aux = (alturaBinario(b->izq) < 2);
- 
-  }
   else if (b->izq == NULL && b->der!=NULL)
-  {
   aux = (alturaBinario(b->der) < 2);
-  
-  }
  else {
  //los dos son no nulos
   if (absolut(alturaBinario(b->izq) - alturaBinario(b->der))>1 ){
   
-  aux = false;}
+  return false;
+  }
 
  else aux = (esAvl(b->izq) && esAvl(b->der));
 }
 if(alturaBinario(b->izq) == alturaBinario(b->der)) aux = true;
 return aux;
 }
-
 /*
   Devuelve el elemento asociado a la raíz de 'b'.
   Precondición: ! esVacioBinario(b).

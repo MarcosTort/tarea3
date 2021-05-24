@@ -58,7 +58,7 @@ bool aux(TLocalizador l, TCadena c, TBinario b)
 bool esCamino(TCadena c, TBinario b)
 {
   TLocalizador loc = inicioCadena(c);
-  return aux(loc, c, b);
+   return aux(loc, c, b) && esHoja(buscarSubarbol(natInfo(infoCadena(finalCadena(c), c)), b));
 }
 bool pertenece(nat elem, TCadena cad){
   TLocalizador rec = inicioCadena(cad);

@@ -31,41 +31,35 @@ TCadena nivelEnBinario(nat l, TBinario b){
   ordenar(ret);
   return ret;
 }
-bool esHoja(TBinario b){
-if (esVacioBinario(b)) {
-	return true;
-  } else {
-	return ((esVacioBinario(derecho(b))) && (esVacioBinario(izquierdo(b))));
-  }
+bool esHoja(TBinario b)
+{ // ?
+  bool esAlgo = (esVacioBinario(derecho(b))) && (esVacioBinario(izquierdo(b)));
+  return esVacioBinario(b) || esAlgo;
+  
 }
 
-void avanzarLoc(TLocalizador &loc, TCadena cad){
+void avanzarLoc(TLocalizador &loc, TCadena cad)
+{
   if (siguiente(loc, cad) != NULL)
-  loc = siguiente(loc, cad);
+    loc = siguiente(loc, cad);
 }
-bool esCaminoaux(TLocalizador &l, TCadena c, TBinario b){
-if(c == NULL && b == NULL) 
-  return true;
-else if(c == NULL || b == NULL) 
-  return false;
-else{
- bool ret;
- ret = (natInfo(raiz(b)) == natInfo(infoCadena(l, c)));
- return ret;
+
+bool aux(TLocalizador l, TCadena c, TBinario b)
+{
+  if (l == NULL && b == NULL)
+    return true;
+  else if (l == NULL || b == NULL)
+  {
+    return false;
   }
-
-}
-bool esCamino(TCadena c, TBinario b){
-bool ret;
-TLocalizador loc = inicioCadena(c);
-if (esCaminoaux(loc, c, b)){
-  avanzarLoc(loc, c);
-  ret = esCaminoaux(loc, c, derecho(b)) || esCaminoaux(loc, c, izquierdo(b));
-}
-else ret = false;
-return ret&&esHoja(buscarSubarbol( natInfo( infoCadena( finalCadena(c), c) ) , b));
+  return (natInfo(raiz(b)) == natInfo(infoCadena(l, c))) && (aux(siguiente(l, c), c, derecho(b)) || aux(siguiente(l, c), c, izquierdo(b)));
 }
 
+bool esCamino(TCadena c, TBinario b)
+{
+  TLocalizador loc = inicioCadena(c);
+  return aux(loc, c, b);
+}
 bool pertenece(nat elem, TCadena cad){
   TLocalizador rec = inicioCadena(cad);
   if(!esVaciaCadena(cad)){

@@ -196,7 +196,7 @@ static int check_AVL(TBinario b) {
 	return (1 + ((izqH>=derH)?izqH:derH ));
 
 }
-bool esAVL(TBinario b){
+bool esAvl(TBinario b){
   int resp = check_AVL(b);
   if (resp < 0) return false;
   else return true;

@@ -177,29 +177,35 @@ bool esHoja2(TBinario b)
   return esVacioBinario(b) || esAlgo;
   
 }
-bool esAvl(TBinario b){
-bool aux = true;
-  if (b == NULL)
-  return true;
-
-  else if (b->izq== NULL && b->der==NULL)
-  return true;
-
-  else if (b->izq != NULL && b->der==NULL)
-  aux = (alturaBinario(b->izq) < 2);
-  else if (b->izq == NULL && b->der!=NULL)
-  aux = (alturaBinario(b->der) < 2);
- else {
- //los dos son no nulos
-  if (absolut(alturaBinario(b->izq) - alturaBinario(b->der))>1 ){
-  
-  return false;
-  }
-
- else aux = (esAvl(b->izq) && esAvl(b->der));
+static int absolut(int n){
+  return (n>=0) ? (n) : (-n);
 }
-if(alturaBinario(b->izq) == alturaBinario(b->der)) aux = true;
-return aux;
+static int check_AVL(TBinario b) {
+	if (b == NULL) {
+		return 0;
+	}
+
+	int izqH = check_AVL(b->izq);
+	if (izqH == -1) {
+		return -1;
+	}
+
+	int derH = check_AVL(b->der);
+	if (derH == -1) {
+		return -1;
+	}
+
+	if ( ((izqH - derH) > 1) || ((derH - izqH) > 1)) {
+		return -1;
+	}
+
+	return (1 + ((izqH>=derH)?izqH:derH ));
+
+}
+bool esAVL(TBinario b){
+  int resp = check_AVL(b);
+  if (resp < 0) return false;
+  else return true;
 }
 
 /*

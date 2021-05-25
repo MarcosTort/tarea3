@@ -172,28 +172,30 @@ bool esHoja2(TBinario b)
 { // ?
   bool esAlgo = (esVacioBinario(derecho(b))) && (esVacioBinario(izquierdo(b)));
   return esVacioBinario(b) || esAlgo;
-  
+}  
+   int absolut(int n){
+  return (n>=0) ? (n) : (-n);
 }
-static int check_AVL(TBinario b) {
+
+ int check_AVL(TBinario b) {
 	if (b == NULL) {
 		return 0;
 	}
-
-	int izqH = check_AVL(b->izq);
-	if (izqH == -1) {
+  int der = check_AVL(b->der);
+	if (der == -1) {
 		return -1;
 	}
 
-	int derH = check_AVL(b->der);
-	if (derH == -1) {
+	int izq = check_AVL(b->izq);
+	if (izq == -1) {
 		return -1;
 	}
 
-	if ( ((izqH - derH) > 1) || ((derH - izqH) > 1)) {
+	if ( absolut(izq - der) > 1) {
 		return -1;
 	}
 
-	return (1 + ((izqH>=derH)?izqH:derH ));
+	return (1 + ((izq>=der)?izq:der ));
 
 }
 bool esAvl(TBinario b){

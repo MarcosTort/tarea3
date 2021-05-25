@@ -186,9 +186,9 @@ bool aux = true;
   return true;
 
   else if (b->izq != NULL && b->der==NULL)
-  aux = (esHoja2(b->izq->izq) && esHoja2(b->izq->der));
+  aux = (alturaBinario(b->izq) < 2);
   else if (b->izq == NULL && b->der!=NULL)
-  aux = (esHoja2(b->der->der) && esHoja2(b->der->izq));
+  aux = (alturaBinario(b->der) < 2);
  else {
  //los dos son no nulos
   if (absolut(alturaBinario(b->izq) - alturaBinario(b->der))>1 ){

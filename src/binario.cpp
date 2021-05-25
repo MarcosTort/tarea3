@@ -168,17 +168,11 @@ bool esVacioBinario(TBinario b){return b == NULL;}//LISTO
   Cada nodo se puede visitar una sola vez.
   El tiempo de ejecución es O(n), siendo 'n' la cantidad de elementos de 'b'.
  */
-static int absolut(int n){
-  return (n>=0) ? (n) : (-n);
-}
 bool esHoja2(TBinario b)
 { // ?
   bool esAlgo = (esVacioBinario(derecho(b))) && (esVacioBinario(izquierdo(b)));
   return esVacioBinario(b) || esAlgo;
   
-}
-static int absolut(int n){
-  return (n>=0) ? (n) : (-n);
 }
 static int check_AVL(TBinario b) {
 	if (b == NULL) {

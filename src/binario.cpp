@@ -177,9 +177,6 @@ bool esHoja(TBinario b)
   return esVacioBinario(b) || esAlgo;
   
 }
- int absolut(int n){
-  return (n>=0) ? (n) : (-n);
-}
 bool esAvl(TBinario b){
 bool aux = true;
   if (b == NULL)

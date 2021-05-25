@@ -171,7 +171,7 @@ bool esVacioBinario(TBinario b){return b == NULL;}//LISTO
 static int absolut(int n){
   return (n>=0) ? (n) : (-n);
 }
-bool esHoja(TBinario b)
+bool esHoja2(TBinario b)
 { // ?
   bool esAlgo = (esVacioBinario(derecho(b))) && (esVacioBinario(izquierdo(b)));
   return esVacioBinario(b) || esAlgo;
@@ -186,9 +186,9 @@ bool aux = true;
   return true;
 
   else if (b->izq != NULL && b->der==NULL)
-  aux = (esHoja(b->izq->izq) && esHoja(b->izq->der));
+  aux = (esHoja2(b->izq->izq) && esHoja2(b->izq->der));
   else if (b->izq == NULL && b->der!=NULL)
-  aux = (esHoja(b->der->der) && esHoja(b->der->izq));
+  aux = (esHoja2(b->der->der) && esHoja2(b->der->izq));
  else {
  //los dos son no nulos
   if (absolut(alturaBinario(b->izq) - alturaBinario(b->der))>1 ){

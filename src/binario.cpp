@@ -180,6 +180,7 @@ bool esHoja(TBinario b)
 static int absolut(int n){
   return (n>=0) ? (n) : (-n);
 }
+bool esAvl(TBinario b){
 bool aux = true;
   if (b == NULL)
   return true;
@@ -190,10 +191,15 @@ bool aux = true;
   else if (b->izq != NULL && b->der==NULL)
   aux = (esHoja(b->izq->izq) && esHoja(b->izq->der));
   else if (b->izq == NULL && b->der!=NULL)
-  aux = (esHoja(b->der->der) && esHoja(b->der->izq));
+  aux = (esHoja(b->der->der) && esHoja(b->der->iz));
  else {
  //los dos son no nulos
- aux = (esAvl(b->izq) && esAvl(b->der));
+  if (absolut(alturaBinario(b->izq) - alturaBinario(b->der))>1 ){
+  
+  return false;
+  }
+
+ else aux = (esAvl(b->izq) && esAvl(b->der));
 }
 if(alturaBinario(b->izq) == alturaBinario(b->der)) aux = true;
 return aux;

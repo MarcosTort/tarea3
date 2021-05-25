@@ -171,6 +171,15 @@ bool esVacioBinario(TBinario b){return b == NULL;}//LISTO
 static int absolut(int n){
   return (n>=0) ? (n) : (-n);
 }
+bool esHoja(TBinario b)
+{ // ?
+  bool esAlgo = (esVacioBinario(derecho(b))) && (esVacioBinario(izquierdo(b)));
+  return esVacioBinario(b) || esAlgo;
+  
+}
+static int absolut(int n){
+  return (n>=0) ? (n) : (-n);
+}
 bool esAvl(TBinario b);
 bool esAvl(TBinario b){
 bool aux = true;
@@ -181,9 +190,9 @@ bool aux = true;
   return true;
 
   else if (b->izq != NULL && b->der==NULL)
-  aux = (alturaBinario(b->izq) < 2);
+  aux = (esHoja(b->izq->izq) && esHoja(b->izq->der));
   else if (b->izq == NULL && b->der!=NULL)
-  aux = (alturaBinario(b->der) < 2);
+  aux = (esHoja(b->der->der) && esHoja(b->der->izq));
  else {
  //los dos son no nulos
   if (absolut(alturaBinario(b->izq) - alturaBinario(b->der))>1 ){
@@ -196,6 +205,7 @@ bool aux = true;
 if(alturaBinario(b->izq) == alturaBinario(b->der)) aux = true;
 return aux;
 }
+
 /*
   Devuelve el elemento asociado a la raíz de 'b'.
   Precondición: ! esVacioBinario(b).
